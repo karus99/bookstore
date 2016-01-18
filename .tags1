@@ -1,0 +1,118 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+html	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^<html>$/;"	function	line:2
+head	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^<head>$/;"	function	line:4
+meta	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<meta charset="UTF-8" \/>$/;"	function	line:6
+title	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<title>Biblioteka Online<\/title>$/;"	function	line:8
+link	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<link rel="stylesheet" type="text\/css" href="css\/bootstrap.min.css" \/>$/;"	function	line:10
+link	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<link rel="stylesheet" type="text\/css" href="css\/font-awesome.min.css" \/>$/;"	function	line:11
+link	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<link rel="stylesheet" type="text\/css" href="css\/login.css" \/>$/;"	function	line:12
+link	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<link rel="stylesheet" type="text\/css" href="css\/main.css" \/>$/;"	function	line:13
+body	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^<body>$/;"	function	line:17
+nav	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<nav class="navbar navbar-default">$/;"	function	line:19
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^		<div class="container-fluid">$/;"	function	line:20
+ul	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^			<ul class="nav navbar-nav">$/;"	function	line:21
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^				<li><img class="flag" src="images\/pl.jpg" \/><\/li>$/;"	function	line:22
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^				<li><img class="flag" src="images\/uk.jpg" \/><\/li>$/;"	function	line:23
+ul	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^			<ul class="nav navbar-nav navbar-right">$/;"	function	line:25
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^				<li><a href="user.html"><span class="glyphicon glyphicon-user"><\/span> Panel użytkownika<\/a><\/li>$/;"	function	line:26
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^				<li><a href="admin.html"><span class="glyphicon glyphicon-cog"><\/span> Panel administratora<\/a><\/li>$/;"	function	line:27
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^				<li><a href="#"><span class="glyphicon glyphicon-log-out"><\/span> Wyloguj się<\/a><\/li>$/;"	function	line:28
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<div class="logo">$/;"	function	line:33
+img	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^		<img src="images\/logo.png" \/>$/;"	function	line:34
+span	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^		<span>Biblioteka Online Kraków<\/span>$/;"	function	line:35
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<div class="container">$/;"	function	line:38
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^		<div class="panel panel-default">$/;"	function	line:39
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^			<div class="panel-heading">$/;"	function	line:40
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^			<div class="panel-body">$/;"	function	line:43
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^				<div class="col-md-3">$/;"	function	line:44
+ul	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^					<ul class="list-group">$/;"	function	line:45
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<li class="list-group-item">Zarządzaj księgozbiorem<\/li>$/;"	function	line:46
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<li class="list-group-item"><a href="worker-edit-books.html">Edytuj informację o książce<\/a><\/li>$/;"	function	line:47
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<li class="list-group-item"><a href="worker-add-book.html">Dodaj książkę<\/a><\/li>$/;"	function	line:48
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<li class="list-group-item"><a href="worker-block-book.html">Zablokuj książkę<\/a><\/li>$/;"	function	line:49
+ul	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^					<ul class="list-group">$/;"	function	line:51
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<li class="list-group-item">Zarządzaj czytelnikami<\/li>$/;"	function	line:52
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<li class="list-group-item"><a href="worker-add-reader.html">Dodaj czytelnika<\/a><\/li>$/;"	function	line:53
+li	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<li class="list-group-item"><a href="#">Zablokuj użytkownika<\/a><\/li>$/;"	function	line:54
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^				<div class="col-md-9">$/;"	function	line:57
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^					<div id="add_fail" style="display: none">$/;"	function	line:58
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<div class="row">$/;"	function	line:59
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<div class="col-xs-4 text-right">$/;"	function	line:60
+i	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<i class="fa fa-times-circle text-danger" style="font-size: 40px;margin-bottom: 20px;"><\/i>$/;"	function	line:61
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<div class="col-xs-8 text-left">$/;"	function	line:63
+span	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<span class="h3 text-danger" style="margin-top: 7px; display: inline-block;">Niepoprawne dane<\/span>$/;"	function	line:64
+form	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^					<form id="add_form" class="form-horizontal">$/;"	function	line:68
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<div class="form-group">$/;"	function	line:69
+label	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<label class="control-label col-xs-3">Wybierz książkę:<\/label>$/;"	function	line:70
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<div class="col-xs-9">$/;"	function	line:71
+select	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<select class="form-control">$/;"	function	line:72
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Zbrodnia i kara<\/option>$/;"	function	line:73
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Zbrodnia i kara<\/option>$/;"	function	line:74
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Zbrodnia i kara<\/option>$/;"	function	line:75
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Zbrodnia i kara<\/option>$/;"	function	line:76
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Zbrodnia i kara<\/option>$/;"	function	line:77
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Zbrodnia i kara<\/option>$/;"	function	line:78
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Zbrodnia i kara<\/option>$/;"	function	line:79
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<div class="form-group">$/;"	function	line:84
+label	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<label class="control-label col-xs-3">Tytuł<\/label>$/;"	function	line:85
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<div class="col-xs-9">$/;"	function	line:86
+input	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<input id="add_title" class="form-control" type="text" placeholder="Zbrodnia i kara"\/>$/;"	function	line:87
+i	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<i class="fa fa-check-circle text-success"><\/i>$/;"	function	line:88
+i	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<i class="fa fa-times-circle text-danger"><\/i>$/;"	function	line:89
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<div class="form-group">$/;"	function	line:92
+label	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<label class="control-label col-xs-3">Autor<\/label>$/;"	function	line:93
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<div class="col-xs-9">$/;"	function	line:94
+input	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<input id="add_author" class="form-control" type="text" placeholder="Fyodor Dostoyevsky"\/>$/;"	function	line:95
+i	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<i class="fa fa-check-circle text-success"><\/i>$/;"	function	line:96
+i	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<i class="fa fa-times-circle text-danger"><\/i>$/;"	function	line:97
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<div class="form-group">$/;"	function	line:100
+label	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<label class="control-label col-xs-3">Kategoria<\/label>$/;"	function	line:101
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<div class="col-xs-9">$/;"	function	line:102
+select	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<select class="form-control">$/;"	function	line:103
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Przygodowe<\/option>$/;"	function	line:104
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Przygodowe<\/option>$/;"	function	line:105
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Przygodowe<\/option>$/;"	function	line:106
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Przygodowe<\/option>$/;"	function	line:107
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Przygodowe<\/option>$/;"	function	line:108
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Przygodowe<\/option>$/;"	function	line:109
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Przygodowe<\/option>$/;"	function	line:110
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Przygodowe<\/option>$/;"	function	line:111
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Przygodowe<\/option>$/;"	function	line:112
+option	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^									<option>Przygodowe<\/option>$/;"	function	line:113
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<div class="form-group">$/;"	function	line:117
+label	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<label class="control-label col-xs-3">Okładka<\/label>$/;"	function	line:118
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<div class="col-xs-9">$/;"	function	line:119
+input	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<input id="add_file" type="file" class="hide" value="Przeglądaj" \/>$/;"	function	line:120
+button	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<button id="add_file_button" type="button" class="btn" style="background-color: #F5F5F5; color: #555; border: 1px solid #CCC">Przeglądaj<\/button>$/;"	function	line:121
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<div class="form-group">$/;"	function	line:124
+label	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<label class="control-label col-xs-3">Słowa kluczowe<\/label>$/;"	function	line:125
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<div class="col-xs-9">$/;"	function	line:126
+input	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<input class="form-control" type="text" placeholder="filozofia nowela"\/>$/;"	function	line:127
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<div class="form-group">$/;"	function	line:130
+label	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<label class="control-label col-xs-3">Opis<\/label>$/;"	function	line:131
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<div class="col-xs-9">$/;"	function	line:132
+textarea	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<textarea class="form-control" style="min-height: 150px; font-size: 14px; line-height: 18px; padding: 5px;" placeholder="Powieść Fiodora Dostojewskiego napisana w 1866 i w tym samym roku opublikowana w odcinkach w czasopiśmie Russkij Wiestnik. W formie książkowej ukazała się w 1867, a w Polsce wydano ją po raz pierwszy w latach 1887–1888."><\/textarea>$/;"	function	line:133
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<div class="form-group">$/;"	function	line:136
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^							<div class="col-xs-9 col-xs-push-3">$/;"	function	line:137
+button	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^								<button id="add_button" type="button" class="btn">Dodaj książkę<\/button>$/;"	function	line:138
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^					<div id="add_success" class="text-center" style="display: none">$/;"	function	line:142
+i	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<i class="fa fa-check-circle text-success" style="font-size: 120px;"><\/i><br\/>$/;"	function	line:143
+span	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^						<span class="h3 text-success">Pomyślnie zaktualizowano książkę!<\/span>$/;"	function	line:144
+footer	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<footer>$/;"	function	line:151
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^		<div class="container-fluid">$/;"	function	line:152
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^			<div class="container">$/;"	function	line:153
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^				<div class="col-md-6">$/;"	function	line:154
+span	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^					<span class="copyright">© 2007-2015 Biblioteka Online Kraków<\/span>$/;"	function	line:155
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^					<div class="hr hr-fading"><\/div>$/;"	function	line:156
+span	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^					<span class="links"><a href="#">Najpopularniejsze<\/a> | <a href="#">Polecamy<\/a> | <a href="#">Nowości<\/a> | <a href="#">Działy<\/a> | <a href="#">Spis Alfabetyczny<\/a><\/span>$/;"	function	line:157
+div	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^				<div class="col-md-6 text-center">$/;"	function	line:159
+a	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^					<a class="to-top" href="#" title="Powrót do góry"><img src="images\/top.png" alt="Powrót do góry" \/><\/a>$/;"	function	line:160
+script	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<script src="https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.11.3\/jquery.min.js"><\/script>$/;"	function	line:166
+script	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<script src="js\/bootstrap.min.js"><\/script>$/;"	function	line:167
+script	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<script src="js\/main.js"><\/script>$/;"	function	line:168
+script	/Users/adammarkowski/Projects/bookstore/worker-edit-books.html	/^	<script src="js\/admin-add-book.js"><\/script>$/;"	function	line:169
