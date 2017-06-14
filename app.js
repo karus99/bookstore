@@ -8,6 +8,70 @@ var bodyParser = require('body-parser');
 var index = require('./routes/client/index');
 
 var app = express();
+var Sequelize = require('sequelize');
+
+// connection
+var sequelize = new Sequelize('library','root','',
+    {
+        dialect: 'mysql',
+        host: 'localhost', // nazwa hosta
+        port: 3306 // numer portu
+    });
+
+var user = sequelize.define('user',
+    {
+        id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        email: Sequelize.TEXT,
+        password: Sequelize.TEXT,
+        type: Sequelize.INTEGER,   // 1. admin, 2. bibliotekarz, 3. user
+        active: Sequelize.INTEGER   // 1 - aktywny, 0 - nieaktywny
+    });
+
+var book = sequelize.define('book',
+    {
+        idBook: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        title: Sequelize.TEXT,
+        author: Sequelize.TEXT,
+        description: Sequelize.TEXT,
+        active: Sequelize.INTEGER   // 1 - aktywny, 0 - nieaktywny
+    });
+
+var lend = sequelize.define('lend',
+    {
+        idLend: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        idUser: {
+            type: Sequelize.INTEGER
+        },
+        idBook: {
+            type: Sequelize.INTEGER
+        },
+        // do kiedy książka ma zostać zwrócona
+        returnDate: {
+            type: Sequelize.DATE
+        },
+        // kiedy książka została faktycznie zwrócona, jeśli nie została jeszcze zwrócona to 0000-00-00 00:00:00
+        returned: {
+            type: Sequelize.DATE
+        }
+    });
+
+// klucze obce w lend (id książki i usera)
+lend.belongsTo(user, {foreignKey: 'idUser', targetKey: 'id'});
+lend.belongsTo(book, {foreignKey: 'idBook', targetKey: 'idBook'});
+
+sequelize.sync();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
