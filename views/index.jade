@@ -1,22 +1,6 @@
 extends layout
 
 block content
-	nav.navbar.navbar-default
-		.container-fluid
-			ul.nav.navbar-nav
-				li
-					img.flag(src='images/pl.jpg')
-				li
-					img.flag(src='images/uk.jpg')
-			ul.nav.navbar-nav.navbar-right
-				li
-					a(href='#', data-toggle='modal', data-target='#register_modal')
-						span.glyphicon.glyphicon-user
-						|  Zarejestruj się
-				li
-					a(href='#', data-toggle='modal', data-target='#login_modal')
-						span.glyphicon.glyphicon-log-in
-						|  Zaloguj się
 	.logo
 		img(src='images/logo.png')
 		span Biblioteka Online Kraków
@@ -285,7 +269,7 @@ block content
 							i.fa.fa-times-circle.text-danger
 						.form-group
 							label.sr-only(for='form-username') Nazwa użytkownika
-							input#reg_email.form-username.form-control(type='text', name='form-username', placeholder='Adres e-mail...')
+							input#reg_email.form-username.form-control(type='text', name='lo_register_email', placeholder='Adres e-mail...')
 							i.fa.fa-check-circle.text-success
 							i.fa.fa-times-circle.text-danger
 						.form-group
@@ -310,15 +294,15 @@ block content
 							i.fa.fa-times-circle.text-danger
 						.form-group
 							label.sr-only(for='form-username') Nazwa użytkownika
-							input#reg_pass.form-password.form-control(type='password', name='form-username', placeholder='Hasło...')
+							input#reg_pass.form-password.form-control(type='password', name='lo_register_password', placeholder='Hasło...')
 							i.fa.fa-check-circle.text-success
 							i.fa.fa-times-circle.text-danger
 						.form-group
 							label.sr-only(for='form-username') Nazwa użytkownika
-							input#reg_pass_re.form-password.form-control(type='password', name='form-username', placeholder='Powtórz hasło...')
+							input#reg_pass_re.form-password.form-control(type='password', name='lo_register_password_re', placeholder='Powtórz hasło...')
 							i.fa.fa-check-circle.text-success
 							i.fa.fa-times-circle.text-danger
-						button#reg_button.btn Zarejestruj się!
+						button#lo_register.btn Zarejestruj się!
 					#reg_success.text-center(style='display: none')
 						i.fa.fa-check-circle.text-success(style='font-size: 120px;')
 						br

@@ -1,13 +1,41 @@
 doctype html
 html
-  head
-    title=title
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
-    link(rel='stylesheet', href='/stylesheets/common.css')
-  body
-    block content
-    block footer
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
-    script(src='javascripts/bootstrap.min.js')
-    block scripts
+	head
+		title=title
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+		link(rel='stylesheet', href='/stylesheets/common.css')
+	body
+		nav.navbar.navbar-default
+			.container-fluid
+				ul.nav.navbar-nav
+					li
+						img.flag(src='images/pl.jpg')
+					li
+						img.flag(src='images/uk.jpg')
+				if auth.logged == false
+					ul.nav.navbar-nav.navbar-right
+						li
+							a(href='#', data-toggle='modal', data-target='#register_modal')
+								span.glyphicon.glyphicon-user
+								|  Zarejestruj się
+						li
+							a(href='#', data-toggle='modal', data-target='#login_modal')
+								span.glyphicon.glyphicon-log-in
+								|  Zaloguj się
+				else
+					ul.nav.navbar-nav.navbar-right
+						li
+							a(href='#')
+								span.glyphicon.glyphicon-user
+								|  #{auth.email}
+						li
+							a(href='#')
+								span.glyphicon.glyphicon-log-out
+								|  Wyloguj się
+		block content
+		block footer
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+		script(src='javascripts/bootstrap.min.js')
+		script(src='javascripts/common.js')
+		block scripts

@@ -193,15 +193,16 @@ $('#reg_button').click(function()
 {
 	var foundErr = false;
 
-	for(var i = 0; i < 9; i ++)
-	{
-		if(check_arr[i] == false)
-		{
-			foundErr = true;
-		}
-	}
+	// TO-DO: front-end, remove unneeded fields. to leave: email, password, re-password
+	// for(var i = 0; i < 9; i ++)
+	// {
+	// 	if(check_arr[i] == false)
+	// 	{
+	// 		foundErr = true;
+	// 	}
+	// }
 
-	if(!foundErr && typeof check_arr[8] != 'undefined')
+	if(!foundErr)
 	{
 		$('#reg_form').hide();
 		$('#reg_fail').hide();
