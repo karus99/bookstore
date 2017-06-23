@@ -11,10 +11,10 @@ var app = express();
 var Sequelize = require('sequelize');
 
 // connection
-var sequelize = new Sequelize('library','root','',
+var sequelize = new Sequelize('db_4021','k4_s4021','45410f5dfbbf',
     {
         dialect: 'mysql',
-        host: 'localhost', // nazwa hosta
+        host: 'i5.liveserver.pl', // nazwa hosta
         port: 3306 // numer portu
     });
 
