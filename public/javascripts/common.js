@@ -7,8 +7,8 @@ $('#lo_register').click(function()
         timeout: 1000,
         data:
         {
-            email: $('[name="lo_register_email"').val(),
-            password: $('[name="lo_register_password"').val()
+            email: $('[name="lo_register_email"]').val(),
+            password: $('[name="lo_register_password"]').val()
         },
         success: function(html)
         {
@@ -17,7 +17,34 @@ $('#lo_register').click(function()
         beforeSend: function(){},
         error: function(html)
         {
-            console.log(html);
+            console.error(html);
+        }
+    });
+});
+
+$('#lo_login').click(function()
+{
+    $.ajax(
+    {
+        type: "POST",
+        url: '/api/user/login',
+        timeout: 1000,
+        data:
+        {
+            email: $('[name="lo_login_email"]').val(),
+            password: $('[name="lo_login_password"]').val()
+        },
+        success: function(html)
+        {
+            if(html == 'USER_LOGGED')
+            {
+                window.location.replace("/");
+            }
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
         }
     });
 });

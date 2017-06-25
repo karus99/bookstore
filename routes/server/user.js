@@ -15,8 +15,8 @@ router.post('/', function(req, res, next)
 		password: req.body.password,
 		session_token: token,
 		session_expire_timestemp: (Date.now() / 1000) + (60 * 60 * 24 * 7),
-		active: 3,
-		type: 0
+		active: 1,
+		type: 3
 	}).save().then(function(user)
 	{
 		var cookie = req.cookies.loSessionToken;
@@ -35,6 +35,48 @@ router.post('/', function(req, res, next)
 		}
 		
 		res.send("USER_ADDED");
+	});
+});
+
+router.post('/login', function(req, res, next)
+{
+	user.findAll(
+	{
+		where:
+		{
+			email: req.body.email,
+			password: req.body.password
+		}
+	}).then(function(_user)
+	{
+		var token = createToken();
+
+		user.update(
+		{
+			session_token: token,
+			session_expire_timestemp: (Date.now() / 1000) + (60 * 60 * 24 * 7)
+		},
+		{
+			where:
+			{
+				id: _user[0].dataValues.id
+			}
+		}).then(function(user_) 
+		{
+			res.cookie('loSessionToken', token,
+			{ 
+				expires: new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)), 
+				httpOnly: false 
+			});
+
+			auth = req.app.get("auth");
+			auth.email = _user[0].dataValues.email;
+			auth.id = _user[0].dataValues.id;
+			auth.logged = true;
+
+			req.app.set("auth", auth);
+			res.send("USER_LOGGED");
+		});
 	});
 });
 

@@ -224,10 +224,10 @@ block content
 					#login_form
 						.form-group
 							label.sr-only(for='form-username') Nazwa użytkownika
-							input#login_login.form-username.form-control(type='text', name='form-username', placeholder='Nazwa użytkownika...')
+							input#login_login.form-username.form-control(type='text', name='lo_login_email', placeholder='Nazwa użytkownika...')
 						.form-group
 							label.sr-only(for='form-password') Hasło
-							input#login_pass.form-password.form-control(type='password', name='form-password', placeholder='Hasło...')
+							input#login_pass.form-password.form-control(type='password', name='lo_login_password', placeholder='Hasło...')
 						.form-group.col-md-6
 							label
 								input(type='checkbox', value='')
@@ -235,7 +235,7 @@ block content
 						.form-group.col-md-6
 							label.btn-forgot
 								a.btn.btn-primary.btn-sm.btn-forgot(href='#') Zapomniałem hasła
-						button#login_button.btn Zaloguj się!
+						button#lo_login.btn Zaloguj się!
 					#login_success.text-center(style='display: none')
 						i.fa.fa-check-circle.text-success(style='font-size: 120px;')
 						br

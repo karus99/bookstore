@@ -95,7 +95,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next)
 {
     console.log(req.cookies.loSessionToken);
-    if(req.cookies.loSessionToken !== undefined)
+    if(req.cookies.loSessionToken === undefined)
+    {
+        auth.logged = false;
+        auth.email = '';
+        auth.id = -1;
+        app.set("auth", auth);
+    }
+    else
     {
         user.findAll(
         {

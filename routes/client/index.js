@@ -10,4 +10,10 @@ router.get('/', function(req, res, next) {
 	res.render('index', { title: 'Biblioteka Online', auth: auth });
 });
 
+router.get('/signout', function(req, res, next)
+{
+	res.clearCookie('loSessionToken');
+	res.redirect('/');
+});
+
 module.exports = router;
