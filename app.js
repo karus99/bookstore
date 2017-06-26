@@ -46,6 +46,7 @@ var book = sequelize.define('book',
             autoIncrement: true
         },
         title: Sequelize.TEXT,
+        cover: Sequelize.TEXT,
         idCat: Sequelize.INTEGER,
         author: Sequelize.TEXT,
         description: Sequelize.TEXT,
