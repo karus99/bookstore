@@ -1,0 +1,17 @@
+extends layout
+
+block content 
+    .container
+        .panel.panel-default
+            .panel-heading
+                | Panel obsługi użytkownika
+            .panel-body
+                .col-md-3
+                    ul.list-group
+                        li.list-group-item Książki
+                        li.list-group-item
+                            a(href='user-borrowed-books.html') Wypożyczone książki
+                        li.list-group-item
+                            a(href='user-prolongs-book.html') Prolonguj książkę
+                .col-md-9.text-center
+                    h2.text-success Witamy w panelu użytkownika.

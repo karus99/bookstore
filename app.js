@@ -123,9 +123,11 @@ app.use(function(req, res, next)
 })
 
 var index = require('./routes/client/index');
+var users = require('./routes/client/user');
 var apiUsers = require('./routes/server/user')(user);
 
 app.use('/', index);
+app.use('/user', users);
 app.use('/api/user/', apiUsers);
 
 // catch 404 and forward to error handler

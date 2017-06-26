@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    .container
+        .panel.panel-default
+            .panel-heading
+                | Panel obsługi użytkownika
+            .panel-body
+                .col-md-3
+                    ul.list-group
+                        li.list-group-item Książki
+                        li.list-group-item
+                            a(href='user-borrowed-books.html') Wypożyczone książki
+                        li.list-group-item
+                            a(href='user-prolongs-book.html') Prolonguj książkę
+                .col-md-9.text-center
+                    h2.text-success Prolonguj książkę.
+                    table.table.table-hover
+                        thead
+                            tr
+                                th Tytuł
+                                th Data zwrotu
+                                th
+                        tbody
+                            tr
+                                td Zbrodnia i kara
+                                td 17 stycznia 2016
+                                td
+                                    a(href='#') Prolonguj
+                            tr
+                                td Matematyka dyskretna
+                                td 18 stycznia 2016
+                                td
+                                    a(href='#') Prolonguj
+                            tr
+                                td Perfekcyjna Pani Domu
+                                td 18 stycznia 2016
+                                td
+                                    a(href='#') Prolonguj

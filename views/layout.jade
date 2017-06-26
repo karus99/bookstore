@@ -5,36 +5,194 @@ html
 		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
 		link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
 		link(rel='stylesheet', href='/stylesheets/common.css')
+		block style
 	body
 		nav.navbar.navbar-default
 			.container-fluid
 				ul.nav.navbar-nav
 					li
-						img.flag(src='images/pl.jpg')
+						img.flag(src='/images/pl.jpg')
 					li
-						img.flag(src='images/uk.jpg')
-				if auth.logged == false
-					ul.nav.navbar-nav.navbar-right
-						li
-							a(href='#', data-toggle='modal', data-target='#register_modal')
-								span.glyphicon.glyphicon-user
-								|  Zarejestruj się
-						li
-							a(href='#', data-toggle='modal', data-target='#login_modal')
-								span.glyphicon.glyphicon-log-in
-								|  Zaloguj się
-				else
-					ul.nav.navbar-nav.navbar-right
-						li
-							a(href='#')
-								span.glyphicon.glyphicon-user
-								|  #{auth.email}
-						li
-							a(href='/signout')
-								span.glyphicon.glyphicon-log-out
-								|  Wyloguj się
+						img.flag(src='/images/uk.jpg')
+				if auth
+					if auth.logged == false
+						ul.nav.navbar-nav.navbar-right
+							li
+								a(href='#', data-toggle='modal', data-target='#register_modal')
+									span.glyphicon.glyphicon-user
+									|  Zarejestruj się
+							li
+								a(href='#', data-toggle='modal', data-target='#login_modal')
+									span.glyphicon.glyphicon-log-in
+									|  Zaloguj się
+					else
+						ul.nav.navbar-nav.navbar-right
+							li
+								a(href='#')
+									span.glyphicon.glyphicon-user
+									|  #{auth.email}
+							li
+								a(href='/signout')
+									span.glyphicon.glyphicon-log-out
+									|  Wyloguj się
+
+		.logo
+			img(src='/images/logo.png')
+			span Biblioteka Online Kraków
+
+		#login_modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal-login-label', aria-hidden='true')
+			.modal-dialog
+				.modal-content
+					.modal-header
+						button.close(type='button', data-dismiss='modal')
+							span(aria-hidden='true') ×
+							span.sr-only Zamknij
+						h3#modal-login-label.modal-title Zaloguj się do biblioteki online.
+						p Wpisz swoją nazwę użytkownika i hasło w celu zalogowania się:
+					#login_box.modal-body
+						#login_fail(style='display: none')
+							.col-xs-4.text-right
+								i.fa.fa-times-circle.text-danger(style='font-size: 40px;margin-bottom: 20px;')
+							.col-xs-8
+								span.h3.text-danger(style='margin-top: 7px; display: inline-block;') Niepoprawne dane
+						#login_form
+							.form-group
+								label.sr-only(for='form-username') Nazwa użytkownika
+								input#login_login.form-username.form-control(type='text', name='lo_login_email', placeholder='Nazwa użytkownika...')
+							.form-group
+								label.sr-only(for='form-password') Hasło
+								input#login_pass.form-password.form-control(type='password', name='lo_login_password', placeholder='Hasło...')
+							.form-group.col-md-6
+								label
+									input(type='checkbox', value='')
+									|  Zapamiętaj mnie
+							.form-group.col-md-6
+								label.btn-forgot
+									a.btn.btn-primary.btn-sm.btn-forgot(href='#') Zapomniałem hasła
+							button#lo_login.btn Zaloguj się!
+						#login_success.text-center(style='display: none')
+							i.fa.fa-check-circle.text-success(style='font-size: 120px;')
+							br
+							span.h3.text-success Pomyślnie zalogowano!
+		#register_modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modal-login-label', aria-hidden='true')
+			.modal-dialog
+				.modal-content
+					.modal-header
+						button.close(type='button', data-dismiss='modal')
+							span(aria-hidden='true') ×
+							span.sr-only Zamknij
+						h3#modal-login-label.modal-title Zarejestruj się do biblioteki online.
+						p Wpisz swoją dane w celu zarejestrowania się:
+					#login_box.modal-body
+						#reg_fail(style='display: none')
+							.row
+								.col-xs-4.text-right
+									i.fa.fa-times-circle.text-danger(style='font-size: 40px;margin-bottom: 20px;')
+								.col-xs-8
+									span.h3.text-danger(style='margin-top: 7px; display: inline-block;') Niepoprawne dane
+						#reg_form
+							.form-group
+								label.sr-only(for='form-username') Nazwa użytkownika
+								input#reg_firstname.form-username.form-control(type='text', placeholder='Imię...')
+								i.fa.fa-check-circle.text-success
+								i.fa.fa-times-circle.text-danger
+							.form-group
+								label.sr-only(for='form-username') Nazwa użytkownika
+								input#reg_lastname.form-username.form-control(type='text', placeholder='Nazwisko...')
+								i.fa.fa-check-circle.text-success
+								i.fa.fa-times-circle.text-danger
+							.form-group
+								label.sr-only(for='form-username') Nazwa użytkownika
+								input#reg_email.form-username.form-control(type='text', name='lo_register_email', placeholder='Adres e-mail...')
+								i.fa.fa-check-circle.text-success
+								i.fa.fa-times-circle.text-danger
+							.form-group
+								label.sr-only(for='form-username') Nazwa użytkownika
+								input#reg_street.form-username.form-control(type='text', name='form-username', placeholder='Ulica...')
+								i.fa.fa-check-circle.text-success
+								i.fa.fa-times-circle.text-danger
+							.form-group
+								label.sr-only(for='form-username') Nazwa użytkownika
+								input#reg_city.form-username.form-control(type='text', name='form-username', placeholder='Miejscowość...')
+								i.fa.fa-check-circle.text-success
+								i.fa.fa-times-circle.text-danger
+							.form-group
+								label.sr-only(for='form-username') Nazwa użytkownika
+								input#reg_postcode.form-username.form-control(type='text', name='form-username', placeholder='Kod pocztowy...')
+								i.fa.fa-check-circle.text-success
+								i.fa.fa-times-circle.text-danger
+							.form-group
+								label.sr-only(for='form-username') Nazwa użytkownika
+								input#reg_login.form-username.form-control(type='text', name='form-username', placeholder='Nazwa użytkownika...')
+								i.fa.fa-check-circle.text-success
+								i.fa.fa-times-circle.text-danger
+							.form-group
+								label.sr-only(for='form-username') Nazwa użytkownika
+								input#reg_pass.form-password.form-control(type='password', name='lo_register_password', placeholder='Hasło...')
+								i.fa.fa-check-circle.text-success
+								i.fa.fa-times-circle.text-danger
+							.form-group
+								label.sr-only(for='form-username') Nazwa użytkownika
+								input#reg_pass_re.form-password.form-control(type='password', name='lo_register_password_re', placeholder='Powtórz hasło...')
+								i.fa.fa-check-circle.text-success
+								i.fa.fa-times-circle.text-danger
+							button#lo_register.btn Zarejestruj się!
+						#reg_success.text-center(style='display: none')
+							i.fa.fa-check-circle.text-success(style='font-size: 120px;')
+							br
+							span.h3.text-success Pomyślnie zarejestrowano!
 		block content
 		block footer
+			.container.map
+				img(src='/images/map.jpg')
+				.info
+					.col-xs-12
+						b Masz Pytania?
+						br
+						| 				Nie ma książki, która Cię interesuje?
+					.col-xs-6.left
+						| Telefon:
+						br
+						| 				000-000-000
+						br
+						| 				(00) 000-00-00
+						br
+						br
+						| 				Adres mailowy:
+						br
+						| 				biblioteka@online.com
+						br
+					.col-xs-6
+						| Biblioteka Kraków
+						br
+						| 				ul. Przykładowa 32
+						br
+						| 				30-033 Kraków
+						br
+						br
+						| 				Pn - Pt 	10:00 - 20:00
+						br
+						| 				Sob - Nd	10:00 - 14:00
+						br
+			footer
+				.container-fluid
+					.container
+						.col-md-6
+							span.copyright © 2007-2015 Biblioteka Online Kraków
+							.hr.hr-fading
+							span.links
+								a(href='#') Najpopularniejsze
+								|  
+								a(href='#') Polecamy
+								|  
+								a(href='#') Nowości
+								|  
+								a(href='#') Działy
+								|  
+								a(href='#') Spis Alfabetyczny
+						.col-md-6.text-center
+							a.to-top(href='#', title='Powrót do góry')
+								img(src='/images/top.png', alt='Powrót do góry')
 		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
 		script(src='javascripts/bootstrap.min.js')
 		script(src='javascripts/common.js')
