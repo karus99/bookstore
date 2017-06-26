@@ -46,6 +46,7 @@ var book = sequelize.define('book',
             autoIncrement: true
         },
         title: Sequelize.TEXT,
+        idCat: Sequelize.INTEGER,
         author: Sequelize.TEXT,
         description: Sequelize.TEXT,
         active: Sequelize.INTEGER   // 1 - aktywny, 0 - nieaktywny
@@ -74,9 +75,21 @@ var lend = sequelize.define('lend',
         }
     });
 
+var category = sequelize.define('category',
+    {
+        idCat: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        name: Sequelize.TEXT
+    });
+
+
 // klucze obce w lend (id książki i usera)
 lend.belongsTo(user, {foreignKey: 'idUser', targetKey: 'id'});
 lend.belongsTo(book, {foreignKey: 'idBook', targetKey: 'idBook'});
+book.belongsTo(category, {foreignKey: 'idCat', targetKey: 'idCat'});
 
 sequelize.sync();
 
