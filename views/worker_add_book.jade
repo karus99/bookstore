@@ -1,0 +1,75 @@
+extends layout
+
+block content
+    .container
+        .panel.panel-default
+            .panel-heading
+                | Panel obsługi bibliotekarza
+            .panel-body
+                .col-md-3
+                    ul.list-group
+                        li.list-group-item Zarządzaj księgozbiorem
+                        li.list-group-item
+                            a(href='worker-edit-books.html') Edytuj informację o książce
+                        li.list-group-item
+                            a(href='worker-add-book.html') Dodaj książkę
+                        li.list-group-item
+                            a(href='worker-block-book.html') Zablokuj książkę
+                    ul.list-group
+                        li.list-group-item Zarządzaj czytelnikami
+                        li.list-group-item
+                            a(href='#') Zablokuj użytkownika
+                .col-md-9
+                    #add_fail(style='display: none')
+                        .row
+                            .col-xs-4.text-right
+                                i.fa.fa-times-circle.text-danger(style='font-size: 40px;margin-bottom: 20px;')
+                            .col-xs-8.text-left
+                                span.h3.text-danger(style='margin-top: 7px; display: inline-block;') Niepoprawne dane
+                    form#add_form.form-horizontal
+                        .form-group
+                            label.control-label.col-xs-3 Tytuł
+                            .col-xs-9
+                                input#add_title.form-control(type='text')
+                                i.fa.fa-check-circle.text-success
+                                i.fa.fa-times-circle.text-danger
+                        .form-group
+                            label.control-label.col-xs-3 Autor
+                            .col-xs-9
+                                input#add_author.form-control(type='text')
+                                i.fa.fa-check-circle.text-success
+                                i.fa.fa-times-circle.text-danger
+                        .form-group
+                            label.control-label.col-xs-3 Kategoria
+                            .col-xs-9
+                                select.form-control
+                                    option Przygodowe
+                                    option Przygodowe
+                                    option Przygodowe
+                                    option Przygodowe
+                                    option Przygodowe
+                                    option Przygodowe
+                                    option Przygodowe
+                                    option Przygodowe
+                                    option Przygodowe
+                                    option Przygodowe
+                        .form-group
+                            label.control-label.col-xs-3 Okładka
+                            .col-xs-9
+                                input#add_file.hide(type='file', value='Przeglądaj')
+                                button#add_file_button.btn(type='button', style='background-color: #F5F5F5; color: #555; border: 1px solid #CCC') Przeglądaj
+                        .form-group
+                            label.control-label.col-xs-3 Słowa kluczowe
+                            .col-xs-9
+                                input.form-control(type='text')
+                        .form-group
+                            label.control-label.col-xs-3 Opis
+                            .col-xs-9
+                                textarea.form-control(style='min-height: 150px; font-size: 14px; line-height: 18px; padding: 5px;')
+                        .form-group
+                            .col-xs-9.col-xs-push-3
+                                button#add_button.btn(type='button') Dodaj książkę
+                    #add_success.text-center(style='display: none')
+                        i.fa.fa-check-circle.text-success(style='font-size: 120px;')
+                        br
+                        span.h3.text-success Pomyślnie dodano nową książkę!

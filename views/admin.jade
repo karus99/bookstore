@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    .container
+        .panel.panel-default
+            .panel-heading
+                | Panel obsługi administratora
+            .panel-body
+                .col-md-3
+                    ul.list-group
+                        li.list-group-item Pracownicy
+                        li.list-group-item
+                            a(href='admin-add-worker.html') Dodaj pracownika
+                        li.list-group-item
+                            a(href='#') Usuń pracownika
+                .col-md-9.text-center
+                    h2.text-success Witamy w panelu administracyjnym.

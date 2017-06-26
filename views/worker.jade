@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    .container
+        .panel.panel-default
+            .panel-heading
+                | Panel obsługi bibliotekarza
+            .panel-body
+                .col-md-3
+                    ul.list-group
+                        li.list-group-item Zarządzaj księgozbiorem
+                        li.list-group-item
+                            a(href='worker-edit-books.html') Edytuj informację o książce
+                        li.list-group-item
+                            a(href='worker-add-book.html') Dodaj książkę
+                        li.list-group-item
+                            a(href='worker-block-book.html') Zablokuj książkę
+                    ul.list-group
+                        li.list-group-item Zarządzaj czytelnikami
+                        li.list-group-item
+                            a(href='#') Zablokuj użytkownika
+                .col-md-9.text-center
+                    h2.text-success Witamy w panelu bibliotekarza.

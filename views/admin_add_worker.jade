@@ -1,0 +1,54 @@
+extends layout
+
+block content
+    .container
+        .panel.panel-default
+            .panel-heading
+                | Panel obsługi administratora
+            .panel-body
+                .col-md-3
+                    ul.list-group
+                        li.list-group-item Pracownicy
+                        li.list-group-item
+                            a(href='admin-add-worker.html') Dodaj pracownika
+                        li.list-group-item
+                            a(href='#') Usuń pracownika
+                .col-md-9
+                    #add_fail(style='display: none')
+                        .row
+                            .col-xs-4.text-right
+                                i.fa.fa-times-circle.text-danger(style='font-size: 40px;margin-bottom: 20px;')
+                            .col-xs-8.text-left
+                                span.h3.text-danger(style='margin-top: 7px; display: inline-block;') Niepoprawne dane
+                    form#add_form.form-horizontal
+                        .form-group
+                            label.control-label.col-xs-3 Imię
+                            .col-xs-9
+                                input#add_firstname.form-control(type='text')
+                                i.fa.fa-check-circle.text-success
+                                i.fa.fa-times-circle.text-danger
+                        .form-group
+                            label.control-label.col-xs-3 Nazwisko
+                            .col-xs-9
+                                input#add_lastname.form-control(type='text')
+                                i.fa.fa-check-circle.text-success
+                                i.fa.fa-times-circle.text-danger
+                        .form-group
+                            label.control-label.col-xs-3 E-mail
+                            .col-xs-9
+                                input#add_email.form-control(type='text')
+                                i.fa.fa-check-circle.text-success
+                                i.fa.fa-times-circle.text-danger
+                        .form-group
+                            label.control-label.col-xs-3 Login
+                            .col-xs-9
+                                input#add_login.form-control(type='text')
+                                i.fa.fa-check-circle.text-success
+                                i.fa.fa-times-circle.text-danger
+                        .form-group
+                            .col-xs-9.col-xs-push-3
+                                button#add_button.btn(type='button') Dodaj pracownika
+                    #add_success.text-center(style='display: none')
+                        i.fa.fa-check-circle.text-success(style='font-size: 120px;')
+                        br
+                        span.h3.text-success Pomyślnie dodano nowego pracownika!
