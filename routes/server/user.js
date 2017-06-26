@@ -80,6 +80,120 @@ router.post('/login', function(req, res, next)
 	});
 });
 
+router.get('/all', function(req, res, next)
+{
+	user.findAll(
+	{
+		order:
+		[
+			['id', 'DESC']
+		]
+	}).then(function(users_)
+	{
+		res.send(JSON.stringify(users_));
+	})
+});
+
+router.get('/:id', function(req, res, next)
+{
+	user.findAll(
+	{
+		where:
+		{
+			id: req.params.id
+		}	
+	}).then(function(user_)
+	{
+		res.send(JSON.stringify(user_[0]));
+	});
+})
+
+router.delete('/:id', function(req, res, next)
+{
+	user.destroy(
+	{
+		where:
+		{
+			id: req.params.id
+		}
+	}).then(function()
+	{
+		res.send("USER_REMOVED");
+	})
+});
+
+router.put('/:id/worker', function(req, res, next)
+{
+	// TO-DO: admin check
+	user.update(
+	{
+		type: 2
+	},
+	{
+		where:
+		{
+			id: req.params.id
+		}
+	}).then(function(user_)
+	{
+		res.send("WORKER_SET");
+	});
+});
+
+router.put('/:id/user', function(req, res, next)
+{
+	// TO-DO: admin check
+	user.update(
+	{
+		type: 3
+	},
+	{
+		where:
+		{
+			id: req.params.id
+		}
+	}).then(function(user_)
+	{
+		res.send("USER_SET");
+	});
+});
+
+router.put('/:id/block', function(req, res, next)
+{
+	// TO-DO: admin check
+	user.update(
+	{
+		active: 0
+	},
+	{
+		where:
+		{
+			id: req.params.id
+		}
+	}).then(function(user_)
+	{
+		res.send("USER_BLOCKED");
+	});
+});
+
+router.put('/:id/unblock', function(req, res, next)
+{
+	// TO-DO: admin check
+	user.update(
+	{
+		active: 1
+	},
+	{
+		where:
+		{
+			id: req.params.id
+		}
+	}).then(function(user_)
+	{
+		res.send("USER_ACTIVATED");
+	});
+});
+
 function createToken()
 {
     var text = "";

@@ -7,7 +7,7 @@ var auth;
 router.get('/', function(req, res, next) 
 {
 	auth = req.app.get("auth");
-	res.render('worker', { auth: auth });
+	res.render('admin', { auth: auth });
 });
 
 router.get('/add-worker', function(req, res, next)
