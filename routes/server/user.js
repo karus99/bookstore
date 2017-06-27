@@ -7,6 +7,20 @@ var user;
 
 router.post('/', function(req, res, next) 
 {
+	user.findAll(
+	{
+		where:
+		{
+			email: req.body.email
+		}	
+	}).then(function(user_)
+	{
+		if(user_.length > 0)
+		{
+			return res.send("EMAIL_EXISTS");
+		}
+	});
+
 	var token = createToken();
 
 	user.build(
