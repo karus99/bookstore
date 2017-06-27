@@ -138,6 +138,32 @@ $(document).ready(function() {
 			console.log(html);
 		}
 	});
+
+    /* GET categories list. */
+	$.ajax(
+	{
+		type: "GET",
+		url: "/api/category/all",
+		success: function(html)
+		{
+			var categories = JSON.parse(html);
+			for(var i in categories) 
+			{
+				$('#categories_table').append('\
+                    <tr>\
+                        <td>' + categories[i].name + '</td>\
+                        <td><button type="button" id="lo_remove_cat" class="btn btn-sm btn-danger pull-right" data-id="' + categories[i].idCat + '">Usuń</button></td>\
+                    </tr>');
+
+                $('[name="lo_add_book_cat_id"]').append('\
+                <option value="' + categories[i].idCat + '">' + categories[i].name + '</option>');
+			}
+		},
+		error: function(html)
+		{
+			console.log(html);
+		}
+	});
 });
 
 check_arr = [];
@@ -225,6 +251,28 @@ $('body').on('click', '#unblock_book', function()
         {
             console.log(html);
 			object.replaceWith('<button type="button" id="block_book" class="btn btn-sm btn-danger pull-right" data-id="' + id + '">Zablokuj</button>');
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
+
+$('body').on('click', '#lo_remove_cat', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "DELETE",
+        url: "/api/category/" + id,
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.parent().parent().remove();
         },
         beforeSend: function() {},
         error: function(html)
