@@ -110,6 +110,13 @@ router.get('/:id', function(req, res, next)
 
 router.delete('/:id', function(req, res, next)
 {
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type != 1)
+		return res.send("INSUFFICENT PERMISSIONS");
+
 	user.destroy(
 	{
 		where:
@@ -124,7 +131,13 @@ router.delete('/:id', function(req, res, next)
 
 router.put('/:id/worker', function(req, res, next)
 {
-	// TO-DO: admin check
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type != 1)
+		return res.send("INSUFFICENT PERMISSIONS");
+
 	user.update(
 	{
 		type: 2
@@ -142,7 +155,13 @@ router.put('/:id/worker', function(req, res, next)
 
 router.put('/:id/user', function(req, res, next)
 {
-	// TO-DO: admin check
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type != 1)
+		return res.send("INSUFFICENT PERMISSIONS");
+
 	user.update(
 	{
 		type: 3
@@ -160,7 +179,13 @@ router.put('/:id/user', function(req, res, next)
 
 router.put('/:id/block', function(req, res, next)
 {
-	// TO-DO: admin check
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type > 2)
+		return res.send("INSUFFICENT PERMISSIONS");
+
 	user.update(
 	{
 		active: 0
@@ -178,7 +203,13 @@ router.put('/:id/block', function(req, res, next)
 
 router.put('/:id/unblock', function(req, res, next)
 {
-	// TO-DO: admin check
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type > 2)
+		return res.send("INSUFFICENT PERMISSIONS");
+
 	user.update(
 	{
 		active: 1

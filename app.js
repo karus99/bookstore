@@ -12,7 +12,8 @@ var auth =
 {
     logged: false,
     email: '',
-    id: -1
+    id: -1,
+    type: 999
 };
 
 // connection
@@ -114,6 +115,7 @@ app.use(function(req, res, next)
         auth.logged = false;
         auth.email = '';
         auth.id = -1;
+        auth.type = 999;
         app.set("auth", auth);
     }
     else
@@ -128,6 +130,7 @@ app.use(function(req, res, next)
         {
             auth.email = _user[0].dataValues.email;
             auth.id = _user[0].dataValues.id;
+            auth.type = _user[0].dataValues.type;
             auth.logged = true;
             app.set("auth", auth);
         });

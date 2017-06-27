@@ -79,6 +79,13 @@ router.get('/:query', function(req, res, next)
 
 router.delete('/:id', function(req, res, next)
 {
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type > 2)
+		return res.send("INSUFFICENT PERMISSIONS");
+
 	book.destroy(
 	{
 		where:
@@ -93,7 +100,13 @@ router.delete('/:id', function(req, res, next)
 
 router.put('/:id', function(req, res, next)
 {
-	// TO-DO: admin check
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type > 2)
+		return res.send("INSUFFICENT PERMISSIONS");
+
 	book.update(
 	{
 		title: req.body.title,
@@ -114,7 +127,13 @@ router.put('/:id', function(req, res, next)
 
 router.put('/:id/block', function(req, res, next)
 {
-	// TO-DO: admin check
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type > 2)
+		return res.send("INSUFFICENT PERMISSIONS");
+
 	book.update(
 	{
 		active: 0
@@ -132,7 +151,13 @@ router.put('/:id/block', function(req, res, next)
 
 router.put('/:id/unblock', function(req, res, next)
 {
-	// TO-DO: admin check
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type > 2)
+		return res.send("INSUFFICENT PERMISSIONS");
+		
 	book.update(
 	{
 		active: 1
