@@ -6,6 +6,7 @@ var express = require('express');
 var router = express.Router();
 
 var category;
+var book;
 
 // add category
 router.post('/', function(req, res, next)
@@ -72,6 +73,20 @@ router.delete('/:id', function(req, res, next)
 
     if(auth.type > 2)
         return res.send("INSUFFICENT PERMISSIONS");
+
+    if(req.params.id == 0)
+        return res.send("CANNOT BE DELETED");
+
+    book.update(
+        {
+            idCat: 0
+        },
+        {
+            where:
+                {
+                    idCat: req.params.id
+                }
+        });
 
     category.destroy(
         {
