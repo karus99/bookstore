@@ -23,5 +23,22 @@ block content
                         li.list-group-item Zarządzaj czytelnikami
                         li.list-group-item
                             a(href='/worker/add-del-user') Zablokuj/Odblokuj użytkownika
-                .col-md-9.text-center
-                    h2.text-success Dodaj kategorię.
+                .col-md-9
+                    #add_fail(style='display: none')
+                        .row
+                            .col-xs-4.text-right
+                                i.fa.fa-times-circle.text-danger(style='font-size: 40px;margin-bottom: 20px;')
+                            .col-xs-8.text-left
+                                span.h3.text-danger(style='margin-top: 7px; display: inline-block;') Niepoprawne dane
+                    div.form-horizontal
+                        .form-group
+                            label.control-label.col-xs-3 Nazwa kategorii
+                            .col-xs-9
+                                input#add_name.form-control(type='text', name="lo_add_cat_name")
+                                i.fa.fa-check-circle.text-success
+                                i.fa.fa-times-circle.text-danger
+                        .form-group
+                            .col-xs-9.col-xs-push-3
+                                button#lo_add_cat.btn(type='button') Dodaj kategorię
+block scripts
+    script(src='/javascripts/worker.js')

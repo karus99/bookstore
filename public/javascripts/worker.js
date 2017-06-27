@@ -40,6 +40,45 @@ $('#lo_add_book').click(function()
     });
 });
 
+$('#lo_add_cat').click(function()
+{
+    for(var i = 0; i < 1; i ++)
+    {
+        if(check_arr[i] == false || check_arr[i] === undefined)
+        {
+            $('#add_fail').fadeIn();
+            $('#add_fail .error-text').html('Niepoprawne dane.');
+            return;
+        }
+    }
+
+    $('#add_fail').fadeOut();
+
+    $.ajax(
+    {
+        type: "POST",
+        url: '/api/category/',
+        timeout: 1000,
+        data:
+        {
+            name: $('[name="lo_add_cat_name"]').val()
+        },
+        success: function(html)
+        {
+            console.log(html);
+            if(html == "CATEGORY_ADDED")
+            {
+               window.location.replace("/worker/del-category");
+            }
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
+
 $('body').on('click', '[data-action="file-upload"]', function()
 {
 	$(this).val('');
@@ -132,6 +171,22 @@ $('#add_author').keyup(function()
 		$(this).parent().children('.fa-check-circle').hide();
 		$(this).parent().children('.fa-times-circle').fadeIn();
 		check_arr[1] = false;
+	}
+});
+
+$('#add_name').keyup(function()
+{
+	if($(this).val().length > 0)
+	{
+		$(this).parent().children('.fa-check-circle').fadeIn();
+		$(this).parent().children('.fa-times-circle').hide();
+		check_arr[0] = true;
+	}
+	else
+	{
+		$(this).parent().children('.fa-check-circle').hide();
+		$(this).parent().children('.fa-times-circle').fadeIn();
+		check_arr[0] = false;
 	}
 });
 
