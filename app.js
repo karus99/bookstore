@@ -153,7 +153,7 @@ app.use(function(req, res, next)
 
 var index = require('./routes/client/index');
 var users = require('./routes/client/user');
-var worker = require('./routes/client/worker');
+var worker = require('./routes/client/worker')(photo);
 var admin = require('./routes/client/admin');
 var apiUsers = require('./routes/server/user')(user);
 var apiBooks = require('./routes/server/book')(book, photo);

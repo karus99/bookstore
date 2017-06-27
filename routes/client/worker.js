@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var auth;
+var photo;
 
 /* GET home page. */
 router.get('/', function(req, res, next) 
@@ -13,6 +14,12 @@ router.get('/', function(req, res, next)
 router.get('/add-book', function(req, res, next)
 {
     auth = req.app.get("auth");
+
+	photo.build(
+	{
+		path: 'no-cover.jpg'
+	}).save();
+
 	res.render('worker_add_book', { auth: auth });
 });
 
@@ -46,4 +53,8 @@ router.get('/add-del-user', function(req, res, next)
 	res.render('worker_add_del_user', { auth: auth });
 });
 
-module.exports = router;
+module.exports = function(_photo)
+{
+	photo = _photo;
+	return router;
+};

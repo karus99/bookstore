@@ -19,36 +19,36 @@ router.post('/', function(req, res, next)
 		{
 			return res.send("EMAIL_EXISTS");
 		}
-	});
 
-	var token = createToken();
+		var token = createToken();
 
-	user.build(
-	{
-		email: req.body.email,
-		password: req.body.password,
-		session_token: token,
-		session_expire_timestemp: (Date.now() / 1000) + (60 * 60 * 24 * 7),
-		active: 1,
-		type: 3
-	}).save().then(function(user)
-	{
-		var cookie = req.cookies.loSessionToken;
-		if (cookie === undefined)
+		user.build(
 		{
-			res.cookie('loSessionToken', token,
-			{ 
-    			expires: new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)), 
-				httpOnly: false 
-			});
-			console.log('cookie created successfully');
-		} 
-		else
+			email: req.body.email,
+			password: req.body.password,
+			session_token: token,
+			session_expire_timestemp: (Date.now() / 1000) + (60 * 60 * 24 * 7),
+			active: 1,
+			type: 3
+		}).save().then(function(user)
 		{
-			console.log('cookie exists', cookie);
-		}
-		
-		res.send("USER_ADDED");
+			var cookie = req.cookies.loSessionToken;
+			if (cookie === undefined)
+			{
+				res.cookie('loSessionToken', token,
+				{ 
+					expires: new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)), 
+					httpOnly: false 
+				});
+				console.log('cookie created successfully');
+			} 
+			else
+			{
+				console.log('cookie exists', cookie);
+			}
+			
+			res.send("USER_ADDED");
+		});
 	});
 });
 

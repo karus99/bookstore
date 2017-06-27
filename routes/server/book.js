@@ -105,6 +105,55 @@ router.get('/cat/:id', function(req, res, next)
 	});
 });
 
+router.get('/letter/:letter', function(req, res, next)
+{
+	book.findAll(
+	{
+		where:
+		{
+			title:
+			{
+				$like: req.params.letter + '%'
+			}
+		}	
+	}).then(function(books_)
+	{
+		res.send(JSON.stringify(books_));
+	});
+});
+
+router.get('/recommended', function(req, res, next)
+{
+	book.findAll(
+	{
+		where:
+		{
+			recommended: 1
+		},
+		order:
+		[
+			['idBook', 'DESC']
+		]
+	}).then(function(books_)
+	{
+		res.send(JSON.stringify(books_));
+	});
+});
+
+router.get('/popular', function(req, res, next)
+{
+	book.findAll(
+	{
+		order:
+		[
+			['visits', 'DESC']
+		]
+	}).then(function(books_)
+	{
+		res.send(JSON.stringify(books_));
+	});
+});
+
 router.get('/:query', function(req, res, next)
 {
     book.findAll(
