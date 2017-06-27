@@ -141,12 +141,14 @@ var users = require('./routes/client/user');
 var worker = require('./routes/client/worker');
 var admin = require('./routes/client/admin');
 var apiUsers = require('./routes/server/user')(user);
+var apiBooks = require('./routes/server/book')(book);
 
 app.use('/', index);
 app.use('/user', users);
 app.use('/worker', worker);
 app.use('/admin', admin);
 app.use('/api/user/', apiUsers);
+app.use('/api/book/', apiBooks);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

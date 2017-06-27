@@ -30,29 +30,29 @@ block content
                         .form-group
                             label.control-label.col-xs-3 Tytuł
                             .col-xs-9
-                                input#add_title.form-control(type='text')
+                                input#add_title.form-control(type='text', name="lo_add_book_title")
                                 i.fa.fa-check-circle.text-success
                                 i.fa.fa-times-circle.text-danger
                         .form-group
                             label.control-label.col-xs-3 Autor
                             .col-xs-9
-                                input#add_author.form-control(type='text')
+                                input#add_author.form-control(type='text', name="lo_add_book_author")
                                 i.fa.fa-check-circle.text-success
                                 i.fa.fa-times-circle.text-danger
                         .form-group
                             label.control-label.col-xs-3 Kategoria
                             .col-xs-9
-                                select.form-control
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
+                                select.form-control(name="lo_add_book_cat_id")
+                                    option(value="0") Przygodowe
+                                    option(value="0") Przygodowe
+                                    option(value="0") Przygodowe
+                                    option(value="0") Przygodowe
+                                    option(value="0") Przygodowe
+                                    option(value="0") Przygodowe
+                                    option(value="0") Przygodowe
+                                    option(value="0") Przygodowe
+                                    option(value="0") Przygodowe
+                                    option(value="0") Przygodowe
                         .form-group
                             label.control-label.col-xs-3 Okładka
                             .col-xs-9
@@ -65,11 +65,13 @@ block content
                         .form-group
                             label.control-label.col-xs-3 Opis
                             .col-xs-9
-                                textarea.form-control(style='min-height: 150px; font-size: 14px; line-height: 18px; padding: 5px;')
+                                textarea.form-control(name='lo_add_book_description', style='min-height: 150px; font-size: 14px; line-height: 18px; padding: 5px;')
                         .form-group
                             .col-xs-9.col-xs-push-3
-                                button#add_button.btn(type='button') Dodaj książkę
+                                button#lo_add_book.btn(type='button') Dodaj książkę
                     #add_success.text-center(style='display: none')
                         i.fa.fa-check-circle.text-success(style='font-size: 120px;')
                         br
                         span.h3.text-success Pomyślnie dodano nową książkę!
+block scripts
+    script(src='/javascripts/worker.js')
