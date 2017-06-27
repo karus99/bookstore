@@ -25,4 +25,12 @@ block content
                             a(href='/worker/add-del-user') Zablokuj/Odblokuj użytkownika
                 .col-md-9.text-center
                     h2.text-success Zablokuj/Odblokuj użytkownika.
-                
+                    table.table.table-striped.table-hover
+                        thead
+                            tr
+                                th Użytkownik
+                                th.text-right(style="padding-right: 10px;") Akcja
+                        tbody#users_table.text-left
+                    
+block scripts
+    script(src='/javascripts/worker.js')

@@ -103,69 +103,6 @@ $('body').on('change', '[data-action="file-upload"]', function()
     });
 });
 
-$(document).ready(function() {
-	/* GET blocked/unblocked book list. */
-	$.ajax(
-	{
-		type: "GET",
-		url: "/api/book/all",
-		success: function(html)
-		{
-			var books = JSON.parse(html);
-			for(var i in books) 
-			{
-				
-				if(books[i].active == 0)
-				{
-					$('#blocks_table').append('\
-                        <tr>\
-                            <td>' + books[i].title + '</td>\
-                            <td><button type="button" id="unblock_book" class="btn btn-sm btn-primary pull-right" data-id="' + books[i].idBook + '">Odblokuj</button></td>\
-                        </tr>');
-				}
-				else if(books[i].active == 1)
-				{
-					$('#blocks_table').append('\
-                        <tr>\
-                            <td>' + books[i].title + '</td>\
-                            <td><button type="button" id="block_book" class="btn btn-sm btn-danger pull-right" data-id="' + books[i].idBook + '">Zablokuj</button></td>\
-                        </tr>');
-				}
-			}
-		},
-		error: function(html)
-		{
-			console.log(html);
-		}
-	});
-
-    /* GET categories list. */
-	$.ajax(
-	{
-		type: "GET",
-		url: "/api/category/all",
-		success: function(html)
-		{
-			var categories = JSON.parse(html);
-			for(var i in categories) 
-			{
-				$('#categories_table').append('\
-                    <tr>\
-                        <td>' + categories[i].name + '</td>\
-                        <td><button type="button" id="lo_remove_cat" class="btn btn-sm btn-danger pull-right" data-id="' + categories[i].idCat + '">Usuń</button></td>\
-                    </tr>');
-
-                $('[name="lo_add_book_cat_id"]').append('\
-                <option value="' + categories[i].idCat + '">' + categories[i].name + '</option>');
-			}
-		},
-		error: function(html)
-		{
-			console.log(html);
-		}
-	});
-});
-
 check_arr = [];
 
 $('#add_title').keyup(function()
@@ -200,22 +137,61 @@ $('#add_author').keyup(function()
 	}
 });
 
-$('#add_name').keyup(function()
-{
-	if($(this).val().length > 0)
+$(document).ready(function() {
+	/* GET blocked/unblocked book list. */
+	$.ajax(
 	{
-		$(this).parent().children('.fa-check-circle').fadeIn();
-		$(this).parent().children('.fa-times-circle').hide();
-		check_arr[0] = true;
-	}
-	else
-	{
-		$(this).parent().children('.fa-check-circle').hide();
-		$(this).parent().children('.fa-times-circle').fadeIn();
-		check_arr[0] = false;
-	}
-});
+		type: "GET",
+		url: "/api/book/all",
+		success: function(html)
+		{
+			var books = JSON.parse(html);
+			for(var i in books) 
+			{
+				if(books[i].active == 0)
+				{
+					$('#blocks_table').append('\
+                        <tr>\
+                            <td>' + books[i].title + '</td>\
+                            <td><button type="button" id="unblock_book" class="btn btn-sm btn-primary pull-right" data-id="' + books[i].idBook + '">Odblokuj</button></td>\
+                        </tr>');
+				}
+				else if(books[i].active == 1)
+				{
+					$('#blocks_table').append('\
+                        <tr>\
+                            <td>' + books[i].title + '</td>\
+                            <td><button type="button" id="block_book" class="btn btn-sm btn-danger pull-right" data-id="' + books[i].idBook + '">Zablokuj</button></td>\
+                        </tr>');
+				}
+			}
+		},
+		error: function(html)
+		{
+			console.log(html);
+		}
+	});
 
+<<<<<<< Updated upstream
+    /* GET categories list. */
+	$.ajax(
+	{
+		type: "GET",
+		url: "/api/category/all",
+		success: function(html)
+		{
+			var categories = JSON.parse(html);
+			for(var i in categories) 
+			{
+				$('#categories_table').append('\
+                    <tr>\
+                        <td>' + categories[i].name + '</td>\
+                        <td><button type="button" id="lo_remove_cat" class="btn btn-sm btn-danger pull-right" data-id="' + categories[i].idCat + '">Usuń</button></td>\
+                    </tr>');
+
+                $('[name="lo_add_book_cat_id"]').append('\
+                <option value="' + categories[i].idCat + '">' + categories[i].name + '</option>');
+=======
 $('body').on('click', '#block_book', function()
 {
 	var id = $(this).attr('data-id');
@@ -251,6 +227,169 @@ $('body').on('click', '#unblock_book', function()
         {
             console.log(html);
 			object.replaceWith('<button type="button" id="block_book" class="btn btn-sm btn-danger pull-right" data-id="' + id + '">Zablokuj</button>');
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
+
+$(document).ready(function() {
+	/* GET users/workers list. */
+	$.ajax(
+	{
+		type: "GET",
+		url: "/api/user/all",
+		success: function(html)
+		{
+			var users = JSON.parse(html);
+			var type = $('#users_table').attr('data-type');
+			for(var i in users) 
+			{
+				if(users[i].active == 0)
+				{
+					$('#users_table').append('\
+			<tr>\
+				<td>' + users[i].email + '</td>\
+				<td><button type="button" id="unblock_user" class="btn btn-sm btn-primary pull-right" data-id="' + users[i].id + '">Odblokuj</button></td>\
+			</tr>');
+				}
+				else if(users[i].active == 1)
+				{
+					$('#users_table').append('\
+			<tr>\
+				<td>' + users[i].email + '</td>\
+				<td><button type="button" id="block_user" class="btn btn-sm btn-danger pull-right" data-id="' + users[i].id + '">Zablokuj</button></td>\
+			</tr>');
+				}
+>>>>>>> Stashed changes
+			}
+		},
+		error: function(html)
+		{
+			console.log(html);
+		}
+	});
+});
+
+$('body').on('click', '#unblock_user', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "PUT",
+        url: "/api/user/" + id + "/unblock",
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.replaceWith('<button type="button" id="block_book" class="btn btn-sm btn-danger pull-right" data-id="' + id + '">Zablokuj</button>');
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
+
+$('body').on('click', '#block_user', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "PUT",
+        url: "/api/user/" + id + "/block",
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.replaceWith('<button type="button" id="block_book" class="btn btn-sm btn-primary pull-right" data-id="' + id + '">Odblokuj</button>');
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
+
+$(document).ready(function() {
+	/* GET users/workers list. */
+	$.ajax(
+	{
+		type: "GET",
+		url: "/api/user/all",
+		success: function(html)
+		{
+			var users = JSON.parse(html);
+			var type = $('#users_table').attr('data-type');
+			for(var i in users) 
+			{
+				if(users[i].active == 0)
+				{
+					$('#users_table').append('\
+			<tr>\
+				<td>' + users[i].email + '</td>\
+				<td><button type="button" id="unblock_user" class="btn btn-sm btn-primary pull-right" data-id="' + users[i].id + '">Odblokuj</button></td>\
+			</tr>');
+				}
+				else if(users[i].active == 1)
+				{
+					$('#users_table').append('\
+			<tr>\
+				<td>' + users[i].email + '</td>\
+				<td><button type="button" id="block_user" class="btn btn-sm btn-danger pull-right" data-id="' + users[i].id + '">Zablokuj</button></td>\
+			</tr>');
+				}
+			}
+		},
+		error: function(html)
+		{
+			console.log(html);
+		}
+	});
+});
+
+$('body').on('click', '#unblock_user', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "PUT",
+        url: "/api/user/" + id + "/unblock",
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.replaceWith('<button type="button" id="block_book" class="btn btn-sm btn-danger pull-right" data-id="' + id + '">Zablokuj</button>');
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
+
+$('body').on('click', '#block_user', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "PUT",
+        url: "/api/user/" + id + "/block",
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.replaceWith('<button type="button" id="block_book" class="btn btn-sm btn-primary pull-right" data-id="' + id + '">Odblokuj</button>');
         },
         beforeSend: function() {},
         error: function(html)
