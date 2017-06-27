@@ -125,8 +125,9 @@ router.put('/:id', function(req, res, next)
     });
 });
 
-module.exports = function(_category)
+module.exports = function(_category, _book)
 {
     category = _category;
+    book = _book;
     return router;
 };

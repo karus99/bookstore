@@ -157,7 +157,7 @@ var worker = require('./routes/client/worker')(photo);
 var admin = require('./routes/client/admin');
 var apiUsers = require('./routes/server/user')(user);
 var apiBooks = require('./routes/server/book')(book, photo);
-var apiCategories = require('./routes/server/category')(category);
+var apiCategories = require('./routes/server/category')(category, book);
 
 app.use('/', index);
 app.use('/user', users);
