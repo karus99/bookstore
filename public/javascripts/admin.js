@@ -35,3 +35,46 @@ $(document).ready(function() {
 	});
 });
 
+$('body').on('click', '#lo_add_worker', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "PUT",
+        url: "/api/user/" + id + "/worker",
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.parent().parent().remove();
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
+
+$('body').on('click', '#lo_del_worker', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "PUT",
+        url: "/api/user/" + id + "/user",
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.parent().parent().remove();
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
