@@ -2,19 +2,64 @@ var express = require('express');
 var router = express.Router();
 
 var book;
+var photo;
+
+var multer = require('multer');
+var storage = multer.diskStorage(
+{
+	destination: function (req, file, callback) 
+	{
+		callback(null, './public/uploads');
+	},
+	filename: function (req, file, callback) 
+	{
+		callback(null, req.params.filename);
+	}
+});
+var upload = multer({ storage : storage}).single('file_0');
 
 router.post('/', function(req, res, next)
 {
-    book.build(
+	var coverPath = '';
+	var _idPhoto = -1;
+
+	photo.findAll(
 	{
-		title: req.body.title,
-		author: req.body.author,
-		idCat: req.body.idCat,
-		active: 1,
-		description: req.body.description
-	}).save().then(function(book_)
+		order:
+		[
+			['idPhoto', 'DESC']
+		]
+	}).then(function(photo_)
 	{
-		res.send("BOOK_ADDED");
+		if(photo_.length > 0)
+		{
+			coverPath = photo_[0].dataValues.path;
+			_idPhoto = photo_[0].dataValues.idPhoto;
+		}
+
+		book.build(
+		{
+			title: req.body.title,
+			author: req.body.author,
+			idCat: req.body.idCat,
+			active: 1,
+			cover: coverPath,
+			description: req.body.description
+		}).save().then(function(book_)
+		{
+			res.send("BOOK_ADDED");
+
+			photo.destroy(
+			{
+				where:
+				{
+					idPhoto:
+					{
+						$le: _idPhoto
+					}
+				}
+			});
+		});
 	});
 });
 
@@ -173,8 +218,32 @@ router.put('/:id/unblock', function(req, res, next)
 	});
 });
 
-module.exports = function(_book)
+var photoCount = 0;
+router.post('/cover', function(req, res, next)
+{
+	req.params.filename = photoCount + '-' + Date.now() + '.jpg';
+
+	upload(req, res, function(err)
+	{
+		if(err) 
+		{
+			return res.end("ERROR");
+		}
+
+		photo.build(
+		{
+			path: req.params.filename
+		}).save().then(function(photo)
+		{
+			res.send(req.params.filename);
+			photoCount++;
+		});
+	});
+});
+
+module.exports = function(_book, _photo)
 {
 	book = _book;
+	photo = _photo;
 	return router;
 };

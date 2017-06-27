@@ -23,3 +23,27 @@ $('#lo_add_book').click(function()
         }
     });
 });
+
+$('body').on('click', '[data-action="file-upload"]', function()
+{
+	$(this).val('');
+});
+
+$('body').on('change', '[data-action="file-upload"]', function()
+{
+	$('#photo_form').ajaxSubmit(
+	{
+		error: function(xhr)
+		{
+        	console.log(xhr);
+        },
+		success: function(response) 
+		{
+            console.log(response);
+			if(response != "ERROR")
+			{
+				// $('#photo_container').append(response);
+			}
+    	}
+    });
+});

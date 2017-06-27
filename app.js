@@ -87,6 +87,16 @@ var category = sequelize.define('category',
         name: Sequelize.TEXT
     });
 
+var photo = sequelize.define('photos',
+    {
+        idPhoto: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        path: Sequelize.TEXT
+    });
+
 
 // klucze obce w lend (id książki i usera)
 lend.belongsTo(user, {foreignKey: 'idUser', targetKey: 'id'});
@@ -144,7 +154,7 @@ var users = require('./routes/client/user');
 var worker = require('./routes/client/worker');
 var admin = require('./routes/client/admin');
 var apiUsers = require('./routes/server/user')(user);
-var apiBooks = require('./routes/server/book')(book);
+var apiBooks = require('./routes/server/book')(book, photo);
 
 app.use('/', index);
 app.use('/user', users);

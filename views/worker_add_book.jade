@@ -30,7 +30,7 @@ block content
                                 i.fa.fa-times-circle.text-danger(style='font-size: 40px;margin-bottom: 20px;')
                             .col-xs-8.text-left
                                 span.h3.text-danger(style='margin-top: 7px; display: inline-block;') Niepoprawne dane
-                    form#add_form.form-horizontal
+                    div.form-horizontal
                         .form-group
                             label.control-label.col-xs-3 Tytuł
                             .col-xs-9
@@ -60,8 +60,8 @@ block content
                         .form-group
                             label.control-label.col-xs-3 Okładka
                             .col-xs-9
-                                input#add_file.hide(type='file', value='Przeglądaj')
-                                button#add_file_button.btn(type='button', style='background-color: #F5F5F5; color: #555; border: 1px solid #CCC') Przeglądaj
+                                form#photo_form(enctype="multipart/form-data", action="/api/book/cover", method="post")
+                                    input#add_file(type='file', name="file_0", value='Przeglądaj', data-action='file-upload')
                         .form-group
                             label.control-label.col-xs-3 Słowa kluczowe
                             .col-xs-9
