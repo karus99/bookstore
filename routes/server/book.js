@@ -218,6 +218,88 @@ router.put('/:id/unblock', function(req, res, next)
 	});
 });
 
+router.put('/:id/recommend', function(req, res, next)
+{
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type > 2)
+		return res.send("INSUFFICENT PERMISSIONS");
+
+	book.update(
+	{
+		recommended: 1
+	},
+	{
+		where:
+		{
+			idBook: req.params.id
+		}
+	}).then(function(user_)
+	{
+		res.send("BOOK_RECOMMENDED");
+	});
+});
+
+router.put('/:id/unrecommmend', function(req, res, next)
+{
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type > 2)
+		return res.send("INSUFFICENT PERMISSIONS");
+		
+	book.update(
+	{
+		recommended: 0
+	},
+	{
+		where:
+		{
+			idBook: req.params.id
+		}
+	}).then(function(user_)
+	{
+		res.send("BOOK_UNRECOMMENDED");
+	});
+});
+
+router.put('/:id/visit', function(req, res, next)
+{
+	auth = req.app.get("auth");
+	if(!auth.logged)
+		return res.send("UNAUTHORIZED");
+
+	if(auth.type > 2)
+		return res.send("INSUFFICENT PERMISSIONS");
+
+	book.findAll(
+	{
+		where:
+		{
+			idBook: req.params.id
+		}	
+	}).then(function(books_)
+	{
+		book.update(
+		{
+			visits: books_[0].visits + 1
+		},
+		{
+			where:
+			{
+				idBook: req.params.id
+			}
+		}).then(function(user_)
+		{
+			res.send("BOOK_VISIT_ADDED");
+		});
+	});
+});
+
+
 var photoCount = 0;
 router.post('/cover', function(req, res, next)
 {

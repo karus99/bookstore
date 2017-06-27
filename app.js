@@ -51,7 +51,9 @@ var book = sequelize.define('book',
         idCat: Sequelize.INTEGER,
         author: Sequelize.TEXT,
         description: Sequelize.TEXT,
-        active: Sequelize.INTEGER   // 1 - aktywny, 0 - nieaktywny
+        active: Sequelize.INTEGER,   // 1 - aktywny, 0 - nieaktywny
+        visits: Sequelize.INTEGER,
+        recommended: Sequelize.INTEGER
     });
 
 var lend = sequelize.define('lend',
