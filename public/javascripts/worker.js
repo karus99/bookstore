@@ -172,6 +172,30 @@ $(document).ready(function() {
 		}
 	});
 
+
+/* GET book list to edit. */
+	$.ajax(
+	{
+		type: "GET",
+		url: "/api/book/all",
+		success: function(html)
+		{
+			var books = JSON.parse(html);
+			for(var i in books) 
+			{
+				$('#edit_books_table').append('\
+                    <tr>\
+                        <td>' + books[i].title + '</td>\
+                        <td><button type="button" id="edit_book" class="btn btn-sm btn-primary pull-right" data-id="' + books[i].idBook + '">Edytuj</button></td>\
+                    </tr>');
+			}
+		},
+		error: function(html)
+		{
+			console.log(html);
+		}
+	});
+
     /* GET recommendated/unrecommendated book list. */
 	$.ajax(
 	{
@@ -422,4 +446,9 @@ $('body').on('click', '#unrecommend_book', function()
             console.error(html);
         }
     });
+});
+
+$('body').on('click', '#edit_book', function()
+{
+	// move to edit form
 });
