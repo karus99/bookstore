@@ -15,16 +15,16 @@ $(document).ready(function() {
 					$('#users_table').append('\
 			<tr>\
 				<td>' + users[i].email + '</td>\
-				<td><button type="button" id="lo_add_worker" class="btn btn-sm btn-primary pull-right" data-id="' + users[i].id + '">Dodaj</button><td>\
-			<tr>');
+				<td><button type="button" id="lo_add_worker" class="btn btn-sm btn-primary pull-right" data-id="' + users[i].id + '">Dodaj</button></td>\
+			</tr>');
 				}
 				else if(type == "workers" && users[i].type == 2)
 				{
 					$('#users_table').append('\
 			<tr>\
 				<td>' + users[i].email + '</td>\
-				<td><button type="button" id="lo_del_worker" class="btn btn-sm btn-danger pull-right" data-id="' + users[i].id + '">Usuń</button><td>\
-			<tr>');
+				<td><button type="button" id="lo_del_worker" class="btn btn-sm btn-danger pull-right" data-id="' + users[i].id + '">Usuń</button></td>\
+			</tr>');
 				}
 			}
 		},

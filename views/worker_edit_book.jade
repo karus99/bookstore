@@ -10,20 +10,21 @@ block content
                     ul.list-group
                         li.list-group-item Zarządzaj księgozbiorem
                         li.list-group-item
-                            a(href='worker-edit-books.html') Edytuj informację o książce
+                            a(href='/worker/edit-book') Edytuj informacje o książce
                         li.list-group-item
-                            a(href='worker-add-book.html') Dodaj książkę
+                            a(href='/worker/add-book') Dodaj książkę
                         li.list-group-item
-                            a(href='worker-block-book.html') Zablokuj książkę
+                            a(href='/worker/block-book') Zablokuj/Odblokuj książkę
                         li.list-group-item
-                            a(href='#') Dodaj kategorię
+                            a(href='/worker/add-category') Dodaj kategorię
                         li.list-group-item
-                            a(href='#') Usuń kategorię
+                            a(href='/worker/del-category') Usuń kategorię
                     ul.list-group
                         li.list-group-item Zarządzaj czytelnikami
                         li.list-group-item
-                            a(href='#') Zablokuj użytkownika
+                            a(href='/worker/add-del-user') Zablokuj/Odblokuj użytkownika
                 .col-md-9
+                    h2.text-success.text-center Edytuj informacje o książce.
                     #add_fail(style='display: none')
                         .row
                             .col-xs-4.text-right

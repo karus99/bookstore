@@ -10,36 +10,28 @@ block content
                     ul.list-group
                         li.list-group-item Zarządzaj księgozbiorem
                         li.list-group-item
-                            a(href='worker-edit-books.html') Edytuj informację o książce
+                            a(href='/worker/edit-book') Edytuj informacje o książce
                         li.list-group-item
-                            a(href='worker-add-book.html') Dodaj książkę
+                            a(href='/worker/add-book') Dodaj książkę
                         li.list-group-item
-                            a(href='worker-block-book.html') Zablokuj książkę
+                            a(href='/worker/block-book') Zablokuj/Odblokuj książkę
                         li.list-group-item
-                            a(href='#') Dodaj kategorię
+                            a(href='/worker/add-category') Dodaj kategorię
                         li.list-group-item
-                            a(href='#') Usuń kategorię
+                            a(href='/worker/del-category') Usuń kategorię
                     ul.list-group
                         li.list-group-item Zarządzaj czytelnikami
                         li.list-group-item
-                            a(href='#') Zablokuj użytkownika
+                            a(href='/worker/add-del-user') Zablokuj/Odblokuj użytkownika
                 .col-md-9.text-center
-                    h2.text-success Wypożyczone książki.
-                    table.table.table-hover
+                    h2.text-success Zablokuj/Odblokuj książkę.
+                    table.table.table-striped.table-hover
                         thead
                             tr
-                                th Tytuł
-                                th
-                        tbody
-                            tr
-                                td Zbrodnia i kara
-                                td
-                                    a(href='#') Zablokuj
-                            tr
-                                td Matematyka dyskretna
-                                td
-                                    a(href='#') Zablokuj
-                            tr
-                                td Perfekcyjna Pani Domu
-                                td
-                                    a(href='#') Zablokuj
+                                th Tytuł książki
+                                th.text-right(style="padding-right: 10px;") Akcja
+                        tbody#blocks_table.text-left
+                    
+block scripts
+    script(src='/javascripts/worker.js')
+                    

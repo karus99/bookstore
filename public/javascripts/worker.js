@@ -47,3 +47,84 @@ $('body').on('change', '[data-action="file-upload"]', function()
     	}
     });
 });
+
+$(document).ready(function() {
+	/* GET blocked/unblocked book list. */
+	$.ajax(
+	{
+		type: "GET",
+		url: "/api/book/all",
+		success: function(html)
+		{
+			var books = JSON.parse(html);
+			for(var i in books) 
+			{
+				
+				if(books[i].active == 0)
+				{
+					$('#blocks_table').append('\
+                        <tr>\
+                            <td>' + books[i].title + '</td>\
+                            <td><button type="button" id="unblock_book" class="btn btn-sm btn-primary pull-right" data-id="' + books[i].idBook + '">Odblokuj</button></td>\
+                        </tr>');
+				}
+				else if(books[i].active == 1)
+				{
+					$('#blocks_table').append('\
+                        <tr>\
+                            <td>' + books[i].title + '</td>\
+                            <td><button type="button" id="block_book" class="btn btn-sm btn-danger pull-right" data-id="' + books[i].idBook + '">Zablokuj</button></td>\
+                        </tr>');
+				}
+			}
+		},
+		error: function(html)
+		{
+			console.log(html);
+		}
+	});
+});
+
+$('body').on('click', '#block_book', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "PUT",
+        url: "/api/book/" + id + "/block",
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.replaceWith('<button type="button" id="unblock_book" class="btn btn-sm btn-primary pull-right" data-id="' + id + '">Odblokuj</button>');
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
+
+$('body').on('click', '#unblock_book', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "PUT",
+        url: "/api/book/" + id + "/unblock",
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.replaceWith('<button type="button" id="block_book" class="btn btn-sm btn-danger pull-right" data-id="' + id + '">Zablokuj</button>');
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
