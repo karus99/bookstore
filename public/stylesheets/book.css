@@ -66,4 +66,26 @@
 	height: 43px;
 	margin: 54px;
 	background-color: transparent;
+	color: #FFF;
+}
+
+#results .book
+{
+	max-height: 100px !important;
+}
+
+#results .title
+{
+	font-size: 40px;
+	margin-top: 20px;
+}
+
+#results .author
+{
+	line-height: 38px;
+}
+
+#results .row:nth-child(2n)
+{
+	background-color: #F5F5F5;
 }

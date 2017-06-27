@@ -2,8 +2,8 @@ extends layout
 
 block content
 	.search
-		input(type='text', placeholder='Szukaj książek...')
-		button(type='submit')
+		input(type='text', name='lo_seach_query', placeholder='Szukaj książek...')
+		button(type='submit', name='lo_search_books')
 			i.fa.fa-search
 	nav.navbar.navbar-default.navbar-middle
 		.container
@@ -14,161 +14,71 @@ block content
 				li Działy
 				li Spis Alfabetyczny
 	.container.main
-		.col2-3
-			.book-list
-				.col-xs-2 1
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-details
-				img(src='images/book.jpg')
-			.book-list
-				.col-xs-2 2
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-list
-				.col-xs-2 3
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-list
-				.col-xs-2 4
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-list
-				.col-xs-2 5
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-		.col2-3
-			.book-list
-				.col-xs-2 1
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-details
-				img(src='images/book.jpg')
-			.book-list
-				.col-xs-2 2
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-list
-				.col-xs-2 3
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-list
-				.col-xs-2 4
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-list
-				.col-xs-2 5
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-		.col2-3
-			.book-list
-				.col-xs-2 1
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-details
-				img(src='images/book.jpg')
-			.book-list
-				.col-xs-2 2
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-list
-				.col-xs-2 3
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-list
-				.col-xs-2 4
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-			.book-list
-				.col-xs-2 5
-				.col-xs-10
-					a(href='index-book.html') Tytuł książki
-		.col2-3
-			.book-list
-				.col-xs-12
-					a(href='#') Przygodowe
-			.book-list
-				.col-xs-12
-					a(href='#') Przygodowe
-			.book-list
-				.col-xs-12
-					a(href='#') Przygodowe
-			.book-list
-				.col-xs-12
-					a(href='#') Przygodowe
-			.book-list
-				.col-xs-12
-					a(href='#') Przygodowe
-			.book-list
-				.col-xs-12
-					a(href='#') Przygodowe
-			.book-list
-				.col-xs-12
-					a(href='#') Przygodowe
-			.book-list
-				.col-xs-12
-					a(href='#') Przygodowe
-			.book-list
-				.col-xs-12
-					a(href='#') Przygodowe
+		#popular.col2-3
+		#recomended.col2-3
+		#lastest.col2-3
+		#categories.col2-3
 		.col2-3
 			.book-list
 				.col-xs-6
-					a(href='#') A
+					a(href='/letter/a') A
 				.col-xs-6
-					a(href='#') M
+					a(href='/letter/m') M
 			.book-list
 				.col-xs-6
-					a(href='#') B
+					a(href='/letter/b') B
 				.col-xs-6
-					a(href='#') N
+					a(href='/letter/n') N
 			.book-list
 				.col-xs-6
-					a(href='#') C
+					a(href='/letter/c') C
 				.col-xs-6
-					a(href='#') O
+					a(href='/letter/o') O
 			.book-list
 				.col-xs-6
-					a(href='#') D
+					a(href='/letter/d') D
 				.col-xs-6
-					a(href='#') N
+					a(href='/letter/n') N
 			.book-list
 				.col-xs-6
-					a(href='#') E
+					a(href='/letter/e') E
 				.col-xs-6
-					a(href='#') P
+					a(href='/letter/p') P
 			.book-list
 				.col-xs-6
-					a(href='#') F
+					a(href='/letter/f') F
 				.col-xs-6
-					a(href='#') R
+					a(href='/letter/r') R
 			.book-list
 				.col-xs-6
-					a(href='#') G
+					a(href='/letter/g') G
 				.col-xs-6
-					a(href='#') S
+					a(href='/letter/s') S
 			.book-list
 				.col-xs-6
-					a(href='#') H
+					a(href='/letter/h') H
 				.col-xs-6
-					a(href='#') T
+					a(href='/letter/t') T
 			.book-list
 				.col-xs-6
-					a(href='#') I
+					a(href='/letter/i') I
 				.col-xs-6
-					a(href='#') U
+					a(href='/letter/u') U
 			.book-list
 				.col-xs-6
-					a(href='#') J
+					a(href='/letter/j') J
 				.col-xs-6
-					a(href='#') W
+					a(href='/letter/w') W
 			.book-list
 				.col-xs-6
-					a(href='#') K
+					a(href='/letter/k') K
 				.col-xs-6
-					a(href='#') Y
+					a(href='/letter/y') Y
 			.book-list
 				.col-xs-6
-					a(href='#') L
+					a(href='/letter/l') L
 				.col-xs-6
-					a(href='#') Z
+					a(href='/letter/z') Z
+                    
+block scripts
+	script(src='/javascripts/main.js')

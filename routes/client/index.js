@@ -19,7 +19,25 @@ router.get('/signout', function(req, res, next)
 router.get('/book/:id', function(req, res, next)
 {
 	auth = req.app.get("auth");
-	res.render('index_book', { auth: auth });
+	res.render('index_book', { auth: auth, id: req.params.id });
 });
+
+router.get('/cat/:id', function(req, res, next)
+{
+	auth = req.app.get("auth");
+	res.render('index_results', { auth: auth, id: req.params.id, type: 'cat' });
+})
+
+router.get('/letter/:id', function(req, res, next)
+{
+	auth = req.app.get("auth");
+	res.render('index_results', { auth: auth, id: req.params.id, type: 'letter' });
+})
+
+router.get('/query/:query', function(req, res, next)
+{
+	auth = req.app.get("auth");
+	res.render('index_results', { auth: auth, id: req.params.query, type: 'query' });
+})
 
 module.exports = router;

@@ -141,3 +141,10 @@ $('#lo_login').click(function()
         }
     });
 });
+
+$('[name="lo_search_books"]').click(function()
+{
+    var query = $('[name="lo_seach_query"]').val();
+
+    window.location.replace('/query/' + query);
+});

@@ -1,0 +1,16 @@
+extends layout
+
+block style
+    link(rel='stylesheet', href='/stylesheets/book.css')
+
+block content
+    .search
+        input(type='text', name='lo_seach_query', placeholder='Szukaj książek...')
+        button(type='submit', name='lo_search_books')
+            i.fa.fa-search
+    #results.container.main
+        input(type="hidden", value="#{id}" name="id")
+        input(type="hidden", value="#{type}" name="type")
+
+block scripts
+    script(src='/javascripts/main-results.js')
