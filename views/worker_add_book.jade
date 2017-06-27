@@ -1,5 +1,8 @@
 extends layout
 
+block style
+    link(rel='stylesheet', href='/stylesheets/worker.css')
+
 block content
     .container
         .panel.panel-default
@@ -62,10 +65,6 @@ block content
                             .col-xs-9
                                 form#photo_form(enctype="multipart/form-data", action="/api/book/cover", method="post")
                                     input#add_file(type='file', name="file_0", value='Przeglądaj', data-action='file-upload')
-                        .form-group
-                            label.control-label.col-xs-3 Słowa kluczowe
-                            .col-xs-9
-                                input.form-control(type='text')
                         .form-group
                             label.control-label.col-xs-3 Opis
                             .col-xs-9
