@@ -150,7 +150,7 @@ $(document).ready(function() {
 			{
 				if(books[i].active == 0)
 				{
-					$('#blocks_table').append('\
+					$('#books_table').append('\
                         <tr>\
                             <td>' + books[i].title + '</td>\
                             <td><button type="button" id="unblock_book" class="btn btn-sm btn-primary pull-right" data-id="' + books[i].idBook + '">Odblokuj</button></td>\
@@ -158,10 +158,44 @@ $(document).ready(function() {
 				}
 				else if(books[i].active == 1)
 				{
-					$('#blocks_table').append('\
+					$('#books_table').append('\
                         <tr>\
                             <td>' + books[i].title + '</td>\
                             <td><button type="button" id="block_book" class="btn btn-sm btn-danger pull-right" data-id="' + books[i].idBook + '">Zablokuj</button></td>\
+                        </tr>');
+				}
+			}
+		},
+		error: function(html)
+		{
+			console.log(html);
+		}
+	});
+
+    /* GET recommendated/unrecommendated book list. */
+	$.ajax(
+	{
+		type: "GET",
+		url: "/api/book/all",
+		success: function(html)
+		{
+			var books = JSON.parse(html);
+			for(var i in books) 
+			{
+				if(books[i].recommended == 0)
+				{
+					$('#recommendated_books_table').append('\
+                        <tr>\
+                            <td>' + books[i].title + '</td>\
+                            <td><button type="button" id="recommend_book" class="btn btn-sm btn-danger pull-right" data-id="' + books[i].idBook + '">Nierekomendowana</button></td>\
+                        </tr>');
+				}
+				else if(books[i].recommended == 1)
+				{
+					$('#recommendated_books_table').append('\
+                        <tr>\
+                            <td>' + books[i].title + '</td>\
+                            <td><button type="button" id="unrecommend_book" class="btn btn-sm btn-primary pull-right" data-id="' + books[i].idBook + '">Rekomendowana</button></td>\
                         </tr>');
 				}
 			}
@@ -234,27 +268,7 @@ $(document).ready(function() {
 	});
 });
 
-$('body').on('click', '#unblock_user', function()
-{
-	var id = $(this).attr('data-id');
-	var object = $(this);
-    $.ajax(
-    {
-        type: "PUT",
-        url: "/api/user/" + id + "/unblock",
-        timeout: 1000,
-        success: function(html)
-        {
-            console.log(html);
-			object.replaceWith('<button type="button" id="block_book" class="btn btn-sm btn-danger pull-right" data-id="' + id + '">Zablokuj</button>');
-        },
-        beforeSend: function() {},
-        error: function(html)
-        {
-            console.error(html);
-        }
-    });
-});
+
 
 $('body').on('click', '#block_user', function()
 {
@@ -268,7 +282,29 @@ $('body').on('click', '#block_user', function()
         success: function(html)
         {
             console.log(html);
-			object.replaceWith('<button type="button" id="block_book" class="btn btn-sm btn-primary pull-right" data-id="' + id + '">Odblokuj</button>');
+			object.replaceWith('<button type="button" id="unblock_user" class="btn btn-sm btn-primary pull-right" data-id="' + id + '">Odblokuj</button>');
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
+
+$('body').on('click', '#unblock_user', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "PUT",
+        url: "/api/user/" + id + "/unblock",
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.replaceWith('<button type="button" id="block_user" class="btn btn-sm btn-danger pull-right" data-id="' + id + '">Zablokuj</button>');
         },
         beforeSend: function() {},
         error: function(html)
@@ -322,50 +358,6 @@ $('body').on('click', '#unblock_book', function()
     });
 });
 
-$('body').on('click', '#unblock_user', function()
-{
-	var id = $(this).attr('data-id');
-	var object = $(this);
-    $.ajax(
-    {
-        type: "PUT",
-        url: "/api/user/" + id + "/unblock",
-        timeout: 1000,
-        success: function(html)
-        {
-            console.log(html);
-			object.replaceWith('<button type="button" id="block_user" class="btn btn-sm btn-danger pull-right" data-id="' + id + '">Zablokuj</button>');
-        },
-        beforeSend: function() {},
-        error: function(html)
-        {
-            console.error(html);
-        }
-    });
-});
-
-$('body').on('click', '#block_user', function()
-{
-	var id = $(this).attr('data-id');
-	var object = $(this);
-    $.ajax(
-    {
-        type: "PUT",
-        url: "/api/user/" + id + "/block",
-        timeout: 1000,
-        success: function(html)
-        {
-            console.log(html);
-			object.replaceWith('<button type="button" id="unblock_user" class="btn btn-sm btn-primary pull-right" data-id="' + id + '">Odblokuj</button>');
-        },
-        beforeSend: function() {},
-        error: function(html)
-        {
-            console.error(html);
-        }
-    });
-});
-
 $('body').on('click', '#lo_remove_cat', function()
 {
 	var id = $(this).attr('data-id');
@@ -379,6 +371,50 @@ $('body').on('click', '#lo_remove_cat', function()
         {
             console.log(html);
 			object.parent().parent().remove();
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
+
+$('body').on('click', '#recommend_book', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "PUT",
+        url: "/api/book/" + id + "/recommend",
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.replaceWith('<button type="button" id="recommend_book" class="btn btn-sm btn-primary pull-right" data-id="' + books[i].idBook + '">Rekomendowana</button>');
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
+});
+
+$('body').on('click', '#unrecommend_book', function()
+{
+	var id = $(this).attr('data-id');
+	var object = $(this);
+    $.ajax(
+    {
+        type: "PUT",
+        url: "/api/book/" + id + "/unrecommmend",
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+			object.replaceWith('<button type="button" id="unrecommend_book" class="btn btn-sm btn-danger pull-right" data-id="' + books[i].idBook + '">Nierekomendowana</button>');
         },
         beforeSend: function() {},
         error: function(html)

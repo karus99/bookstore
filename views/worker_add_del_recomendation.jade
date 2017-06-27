@@ -26,14 +26,13 @@ block content
                         li.list-group-item
                             a(href='/worker/add-del-user') Zablokuj/Odblokuj użytkownika
                 .col-md-9.text-center
-                    h2.text-success Zablokuj/Odblokuj książkę.
+                    h2.text-success Polecane książki.
                     table.table.table-striped.table-hover
                         thead
                             tr
-                                th Tytuł książki
+                                th Kziążka
                                 th.text-right(style="padding-right: 10px;") Akcja
-                        tbody#books_table.text-left
+                        tbody#recommendated_books_table.text-left
                     
 block scripts
     script(src='/javascripts/worker.js')
-                    

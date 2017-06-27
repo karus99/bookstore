@@ -291,7 +291,7 @@ router.put('/:id/recommend', function(req, res, next)
 	});
 });
 
-router.put('/:id/unrecommmend', function(req, res, next)
+router.put('/:id/unrecommend', function(req, res, next)
 {
 	auth = req.app.get("auth");
 	if(!auth.logged)
