@@ -30,7 +30,7 @@ router.post('/', function(req, res, next)
 			session_expire_timestemp: (Date.now() / 1000) + (60 * 60 * 24 * 7),
 			active: 1,
 			type: 3
-		}).save().then(function(user)
+		}).save().then(function(user_)
 		{
 			var cookie = req.cookies.loSessionToken;
 			if (cookie === undefined)
@@ -46,6 +46,13 @@ router.post('/', function(req, res, next)
 			{
 				console.log('cookie exists', cookie);
 			}
+
+			auth = req.app.get("auth");
+			auth.email = req.body.email;
+			auth.id = user_.dataValues.id;
+			auth.logged = true;
+
+			req.app.set("auth", auth);
 			
 			res.send("USER_ADDED");
 		});
