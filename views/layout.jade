@@ -72,13 +72,6 @@ html
 							.form-group
 								label.sr-only(for='form-password') Hasło
 								input#login_pass.form-password.form-control(type='password', name='lo_login_password', placeholder='Hasło...')
-							.form-group.col-md-6
-								label
-									input(type='checkbox', value='')
-									|  Zapamiętaj mnie
-							.form-group.col-md-6
-								label.btn-forgot
-									a.btn.btn-primary.btn-sm.btn-forgot(href='#') Zapomniałem hasła
 							button#lo_login.btn Zaloguj się!
 						#login_success.text-center(style='display: none')
 							i.fa.fa-check-circle.text-success(style='font-size: 120px;')
@@ -99,50 +92,20 @@ html
 								.col-xs-4.text-right
 									i.fa.fa-times-circle.text-danger(style='font-size: 40px;margin-bottom: 20px;')
 								.col-xs-8
-									span.h3.text-danger(style='margin-top: 7px; display: inline-block;') Niepoprawne dane
+									span.h3.text-danger.error-text(style='margin-top: 7px; display: inline-block;') Niepoprawne dane
 						#reg_form
 							.form-group
-								label.sr-only(for='form-username') Nazwa użytkownika
-								input#reg_firstname.form-username.form-control(type='text', placeholder='Imię...')
-								i.fa.fa-check-circle.text-success
-								i.fa.fa-times-circle.text-danger
-							.form-group
-								label.sr-only(for='form-username') Nazwa użytkownika
-								input#reg_lastname.form-username.form-control(type='text', placeholder='Nazwisko...')
-								i.fa.fa-check-circle.text-success
-								i.fa.fa-times-circle.text-danger
-							.form-group
-								label.sr-only(for='form-username') Nazwa użytkownika
+								label.sr-only(for='form-username') Adres e-mail.
 								input#reg_email.form-username.form-control(type='text', name='lo_register_email', placeholder='Adres e-mail...')
 								i.fa.fa-check-circle.text-success
 								i.fa.fa-times-circle.text-danger
 							.form-group
-								label.sr-only(for='form-username') Nazwa użytkownika
-								input#reg_street.form-username.form-control(type='text', name='form-username', placeholder='Ulica...')
-								i.fa.fa-check-circle.text-success
-								i.fa.fa-times-circle.text-danger
-							.form-group
-								label.sr-only(for='form-username') Nazwa użytkownika
-								input#reg_city.form-username.form-control(type='text', name='form-username', placeholder='Miejscowość...')
-								i.fa.fa-check-circle.text-success
-								i.fa.fa-times-circle.text-danger
-							.form-group
-								label.sr-only(for='form-username') Nazwa użytkownika
-								input#reg_postcode.form-username.form-control(type='text', name='form-username', placeholder='Kod pocztowy...')
-								i.fa.fa-check-circle.text-success
-								i.fa.fa-times-circle.text-danger
-							.form-group
-								label.sr-only(for='form-username') Nazwa użytkownika
-								input#reg_login.form-username.form-control(type='text', name='form-username', placeholder='Nazwa użytkownika...')
-								i.fa.fa-check-circle.text-success
-								i.fa.fa-times-circle.text-danger
-							.form-group
-								label.sr-only(for='form-username') Nazwa użytkownika
+								label.sr-only(for='form-username') Hasło.
 								input#reg_pass.form-password.form-control(type='password', name='lo_register_password', placeholder='Hasło...')
 								i.fa.fa-check-circle.text-success
 								i.fa.fa-times-circle.text-danger
 							.form-group
-								label.sr-only(for='form-username') Nazwa użytkownika
+								label.sr-only(for='form-username') Powtórz hasło.
 								input#reg_pass_re.form-password.form-control(type='password', name='lo_register_password_re', placeholder='Powtórz hasło...')
 								i.fa.fa-check-circle.text-success
 								i.fa.fa-times-circle.text-danger
