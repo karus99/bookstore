@@ -416,7 +416,7 @@ $('body').on('click', '#recommend_book', function()
         success: function(html)
         {
             console.log(html);
-			object.replaceWith('<button type="button" id="recommend_book" class="btn btn-sm btn-primary pull-right" data-id="' + books[i].idBook + '">Rekomendowana</button>');
+			object.replaceWith('<button type="button" id="unrecommend_book" class="btn btn-sm btn-primary pull-right" data-id="' + id + '">Rekomendowana</button>');
         },
         beforeSend: function() {},
         error: function(html)
@@ -433,12 +433,12 @@ $('body').on('click', '#unrecommend_book', function()
     $.ajax(
     {
         type: "PUT",
-        url: "/api/book/" + id + "/unrecommmend",
+        url: "/api/book/" + id + "/unrecommend",
         timeout: 1000,
         success: function(html)
         {
             console.log(html);
-			object.replaceWith('<button type="button" id="unrecommend_book" class="btn btn-sm btn-danger pull-right" data-id="' + books[i].idBook + '">Nierekomendowana</button>');
+			object.replaceWith('<button type="button" id="recommend_book" class="btn btn-sm btn-danger pull-right" data-id="' + id + '">Nierekomendowana</button>');
         },
         beforeSend: function() {},
         error: function(html)
