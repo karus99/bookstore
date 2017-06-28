@@ -13,6 +13,8 @@ block content
             img.img-inline.img-responsive.book.book-cover(src='')
         .col-md-8
             input(type="hidden", value="#{id}" name="book-id")
+            if auth
+                input(type="hidden", name="id", value="#{auth.id}")
             span.title 
             span.author 
             span.publisher Wydawnictwo, 2001
@@ -20,8 +22,11 @@ block content
             span.genere
             span.status.text-success DOSTĘPNA
         .col-md-12.description
-        .col-xs-12.text-center
-            button.btn.btn-default.btn-reserve REZERWUJ
+        if auth
+            if auth.logged
+                .col-xs-12.text-center
+                    span.alert.error-text.hide
+                    button.btn.btn-default.btn-reserve REZERWUJ
 
 block scripts
     script(src='/javascripts/main-book.js')

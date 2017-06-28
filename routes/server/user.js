@@ -3,6 +3,7 @@ var router = express.Router();
 
 var user;
 var lend;
+var book;
 
 /* GET home page. */
 
@@ -249,17 +250,63 @@ router.put('/:id/unblock', function(req, res, next)
 
 router.post('/:id/lend/:book', function(req, res, next)
 {
-	var d = new Date();
-	d.setMonth(d.getMonth() + 1);
-	lend.build(
+	lend.findAll(
 	{
-		idUser: req.params.id,
-		idBook: req.params.book,
-		returnDate: (d).toISOString().substring(0, 19).replace('T', ' ')
-	}).save().then(function(lend_)
+		where:
+		{
+			idUser: req.params.id,
+			idBook: req.params.book
+		}
+	}).then(function (lend_)
 	{
-		res.send("LEND_ADDED");
+		if(lend_.length < 1)
+		{
+			user.findAll(
+			{
+				where:
+				{
+					id: req.params.id
+				}
+			}).then(function(user_)
+			{
+				if(user_[0].dataValues.active == 0)
+				{
+					return res.send("USER_NOT_ACTIVE");
+				}
+
+				book.findAll(
+				{
+					where:
+					{
+						idBook: req.params.book
+					}
+				}).then(function(book_)
+				{
+					if(book_[0].dataValues.active == 0)
+					{
+						return res.send("BOOK_NOT_ACTIVE");
+					}
+				
+					var d = new Date();
+					d.setMonth(d.getMonth() + 1);
+					lend.build(
+					{
+						idUser: req.params.id,
+						idBook: req.params.book,
+						returnDate: (d).toISOString().substring(0, 19).replace('T', ' ')
+					}).save().then(function(lend_)
+					{
+						res.send("LEND_ADDED");
+					});
+				})
+			});
+		}
+		else
+		{
+			res.send("ALREADY_THERE")
+		}
 	});
+	
 });
 
 router.get('/:id/lend', function(req, res, next)
@@ -317,9 +364,10 @@ function createToken()
     return text;
 }
 
-module.exports = function(_user, _lend)
+module.exports = function(_user, _lend, _book)
 {
 	user = _user;
 	lend = _lend;
+	book = _book;
 	return router;
 };
