@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var user;
+var lend;
 
 /* GET home page. */
 
@@ -246,6 +247,65 @@ router.put('/:id/unblock', function(req, res, next)
 	});
 });
 
+router.post('/:id/lend/:book', function(req, res, next)
+{
+	var d = new Date();
+	d.setMonth(d.getMonth() + 1);
+	lend.build(
+	{
+		idUser: req.params.id,
+		idBook: req.params.book,
+		returnDate: (d).toISOString().substring(0, 19).replace('T', ' ')
+	}).save().then(function(lend_)
+	{
+		res.send("LEND_ADDED");
+	});
+});
+
+router.get('/:id/lend', function(req, res, next)
+{
+	lend.findAll(
+	{
+		where:
+		{
+			idUser: req.params.id
+		}
+	}).then(function(lends_)
+	{
+		res.send(JSON.stringify(lends_));
+	})
+});
+
+router.put('/:id/lend/:lend/prolong', function(req, res, next)
+{
+	lend.findAll(
+	{
+		where:
+		{
+			idLend: req.params.lend
+		}
+	}).then(function(lends_)
+	{
+		var date = lends_[0].returnDate;
+		var d = new Date(Date.parse(date));
+		d.setMonth(d.getMonth() + 1);
+
+		lend.update(
+		{
+			returnDate: (d).toISOString().substring(0, 19).replace('T', ' ')
+		},
+		{
+			where:
+			{
+				idLend: req.params.lend
+			}
+		}).then(function(lend_)
+		{
+			res.send((d).toISOString().substring(0, 19).replace('T', ' '));
+		})
+	})
+});
+
 function createToken()
 {
     var text = "";
@@ -257,8 +317,9 @@ function createToken()
     return text;
 }
 
-module.exports = function(_user)
+module.exports = function(_user, _lend)
 {
 	user = _user;
+	lend = _lend;
 	return router;
 };

@@ -10,27 +10,19 @@ block content
                     ul.list-group
                         li.list-group-item Książki
                         li.list-group-item
-                            a(href='user-borrowed-books.html') Wypożyczone książki
+                            a(href='/user/books') Wypożyczone książki
                         li.list-group-item
-                            a(href='user-prolongs-book.html') Prolonguj książkę
+                            a(href='/user/prolong') Prolonguj książkę
                 .col-md-9.text-center
+                    if auth
+                        input(type="hidden", name="id", value="#{auth.id}")
                     h2.text-success Wypożyczone książki.
                     table.table.table-hover
                         thead
                             tr
                                 th Tytuł
-                                th Data wypożyczenia
+                                th Data do zwrotu
                                 th Data zwrotu
-                        tbody
-                            tr
-                                td Zbrodnia i kara
-                                td 3 stycznia 2016
-                                td 17 stycznia 2016
-                            tr
-                                td Matematyka dyskretna
-                                td 4 stycznia 2016
-                                td 18 stycznia 2016
-                            tr
-                                td Perfekcyjna Pani Domu
-                                td 4 stycznia 2016
-                                td 18 stycznia 2016
+                        tbody#borrowed_books
+block scripts
+    script(src='/javascripts/user.js')
