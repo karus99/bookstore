@@ -137,6 +137,22 @@ $('#add_author').keyup(function()
 	}
 });
 
+$('#add_name').keyup(function()
+{
+	if($(this).val().length > 0)
+	{
+		$(this).parent().children('.fa-check-circle').fadeIn();
+		$(this).parent().children('.fa-times-circle').hide();
+		check_arr[0] = true;
+	}
+	else
+	{
+		$(this).parent().children('.fa-check-circle').hide();
+		$(this).parent().children('.fa-times-circle').fadeIn();
+		check_arr[0] = false;
+	}
+});
+
 $(document).ready(function() {
 	/* GET blocked/unblocked book list. */
 	$.ajax(
@@ -247,6 +263,9 @@ $(document).ready(function() {
                     </tr>');
 
                 $('[name="lo_add_book_cat_id"]').append('\
+                <option value="' + categories[i].idCat + '">' + categories[i].name + '</option>');
+
+                $('[name="edit_cat"]').append('\
                 <option value="' + categories[i].idCat + '">' + categories[i].name + '</option>');
 			}
 		},
@@ -450,5 +469,76 @@ $('body').on('click', '#unrecommend_book', function()
 
 $('body').on('click', '#edit_book', function()
 {
-	// move to edit form
+	var id = $(this).attr('data-id');
+
+    $.ajax(
+	{
+		type: "GET",
+		url: "/api/book/" + id,
+		success: function(html)
+		{
+			var book = JSON.parse(html);
+			
+            $('[name="edit_title"]').prop('value', book.title);
+            $('[name="edit_author"]').prop('value', book.author);
+            $('[name="edit_id"]').prop('value', book.idBook);
+            $('#photo_form').attr('action', '/api/book/' + id + '/cover');
+
+            $('[name="edit_cat"] option').each(function()
+            {
+                $(this).removeAttr('selected');
+            });
+
+            $.ajax(
+            {
+                type: "GET",
+                url: "/api/category/" + book.idCat,
+                success: function(html)
+                {
+                    var category = JSON.parse(html);
+                    $('[name="edit_cat"] option').each(function()
+                    {
+                        if(parseInt($(this).val()) == parseInt(category.idCat))
+                            $(this).attr('selected', 'selected');
+                    });
+                }
+            });
+
+            $('[name="edit_desc"]').html(book.description);
+		},
+		error: function(html)
+		{
+			console.log(html);
+		}
+	});
+});
+
+$('#lo_edit_book').click(function()
+{
+    $.ajax(
+    {
+        type: "PUT",
+        url: '/api/book/' + $('[name="edit_id"]').val(),
+        timeout: 1000,
+        data:
+        {
+            title: $('[name="edit_title"]').val(),
+            author: $('[name="edit_author"]').val(),
+            idCat: $('[name="edit_cat"]').val(),
+            description: $('[name="edit_desc"]').val()
+        },
+        success: function(html)
+        {
+            console.log(html);
+            if(html == "BOOK_UPDATED")
+            {
+               window.location.replace("/worker/edit-book");
+            }
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
 });

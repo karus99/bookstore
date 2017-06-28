@@ -372,6 +372,34 @@ router.post('/cover', function(req, res, next)
 	});
 });
 
+router.post('/:id/cover', function(req, res, next)
+{
+	req.params.filename = photoCount + '-' + Date.now() + '.jpg';
+
+	upload(req, res, function(err)
+	{
+		if(err) 
+		{
+			return res.end("ERROR");
+		}
+
+		book.update(
+		{
+			cover: req.params.filename
+		},
+		{
+			where:
+			{
+				idBook: req.params.id
+			}
+		}).then(function(book_)
+		{
+			res.send(req.params.filename);
+			photoCount++;
+		});
+	});
+});
+
 module.exports = function(_book, _photo)
 {
 	book = _book;

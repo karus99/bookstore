@@ -40,45 +40,36 @@ block content
                                 th Tytuł książki
                                 th.text-right(style="padding-right: 10px;") Akcja
                         tbody#edit_books_table.text-left
-                    form#add_form.form-horizontal
+                    div.form-horizontal
+                        input(type="hidden", name="edit_id")
                         .form-group
                             label.control-label.col-xs-3 Tytuł
                             .col-xs-9
-                                input#add_title.form-control(type='text', placeholder='Zbrodnia i kara')
+                                input#add_title.form-control(type='text', name="edit_title")
                                 i.fa.fa-check-circle.text-success
                                 i.fa.fa-times-circle.text-danger
                         .form-group
                             label.control-label.col-xs-3 Autor
                             .col-xs-9
-                                input#add_author.form-control(type='text', placeholder='Fyodor Dostoyevsky')
+                                input#add_author.form-control(type='text', name="edit_author")
                                 i.fa.fa-check-circle.text-success
                                 i.fa.fa-times-circle.text-danger
                         .form-group
                             label.control-label.col-xs-3 Kategoria
                             .col-xs-9
-                                select.form-control
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
-                                    option Przygodowe
+                                select.form-control(name="edit_cat")
                         .form-group
                             label.control-label.col-xs-3 Okładka
                             .col-xs-9
-                                input#add_file.hide(type='file', value='Przeglądaj')
-                                button#add_file_button.btn(type='button', style='background-color: #F5F5F5; color: #555; border: 1px solid #CCC') Przeglądaj
+                                form#photo_form(enctype="multipart/form-data", action="", method="post")
+                                    input#edit_cover(type='file', name="file_0", value='Przeglądaj', data-action='file-upload')
                         .form-group
                             label.control-label.col-xs-3 Opis
                             .col-xs-9
-                                textarea.form-control(style='min-height: 150px; font-size: 14px; line-height: 18px; padding: 5px;', placeholder='Powieść Fiodora Dostojewskiego napisana w 1866 i w tym samym roku opublikowana w odcinkach w czasopiśmie Russkij Wiestnik. W formie książkowej ukazała się w 1867, a w Polsce wydano ją po raz pierwszy w latach 1887–1888.')
+                                textarea.form-control(style='min-height: 150px; font-size: 14px; line-height: 18px; padding: 5px;', name="edit_desc")
                         .form-group
                             .col-xs-9.col-xs-push-3
-                                button#add_button.btn(type='button') Dodaj książkę
+                                button#lo_edit_book.btn(type='button') Dodaj książkę
                     #add_success.text-center(style='display: none')
                         i.fa.fa-check-circle.text-success(style='font-size: 120px;')
                         br
