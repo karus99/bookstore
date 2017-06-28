@@ -38,6 +38,22 @@ $(document).ready(function()
 			console.log(html);
 		}
 	});
+
+    $.ajax(
+    {
+        type: "PUT",
+        url: '/api/book/' + $('[name="book-id"]').val() + '/visit/',
+        timeout: 1000,
+        success: function(html)
+        {
+            console.log(html);
+        },
+        beforeSend: function() {},
+        error: function(html)
+        {
+            console.error(html);
+        }
+    });
 });
 
 $('.btn-reserve').click(function()
