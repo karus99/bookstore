@@ -38,6 +38,18 @@ $(document).ready(function()
                         </div>\
                     </div>');
             }
+
+            if(books.length < 1)
+            {
+                $('#results').append('\
+                    <div class="row">\
+                        <div class="col-md-4 text-center">\
+                        </div>\
+                        <div class="col-md-8">\
+                            <span class="title">Brak wyników</span>\
+                        </div>\
+                    </div>');
+            }
 		},
 		error: function(html)
 		{
