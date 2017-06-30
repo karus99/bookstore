@@ -21,7 +21,13 @@ var sequelize = new Sequelize('db_4021','k4_s4021','45410f5dfbbf',
     {
         dialect: 'mysql',
         host: 'i5.liveserver.pl', // nazwa hosta
-        port: 3306 // numer portu
+        port: 3306, // numer portu,
+        pool:
+        {
+            min: 1,
+            max: 30,
+            idle: 300000000
+        }
     });
 
 var user = sequelize.define('user',
