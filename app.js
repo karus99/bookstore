@@ -17,10 +17,10 @@ var auth =
 };
 
 // connection
-var sequelize = new Sequelize('db_4021','k4_s4021','45410f5dfbbf',
+var sequelize = new Sequelize('c9','karusito','',
     {
         dialect: 'mysql',
-        host: 'i5.liveserver.pl', // nazwa hosta
+        host: 'localhost', // nazwa hosta
         port: 3306, // numer portu,
         pool:
         {
