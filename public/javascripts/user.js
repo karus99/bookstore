@@ -12,33 +12,25 @@ $(document).ready(function()
 			
             for(var i in books)
             {
-                $.ajax(
-                {
-                    type: "GET",
-                    url: "/api/book/" + books[i].idBook,
-                    success: function(html)
-                    {
-                        var book = JSON.parse(html);
-                        
-                        $('#borrowed_books').append('\
-                        <tr>\
-                            <td>' + book.title + '</td>\
-                            <td>' + books[i].returnDate.substring(0, 19).replace('T', ' ') + '</td>\
-                            <td>' + books[i].returned + '</td>\
-                        </tr>');
+                $('#borrowed_books').append('\
+                <tr>\
+                    <td id="book_title_' + books[i].idLend +'"></td>\
+                    <td>' + books[i].returnDate.substring(0, 19).replace('T', ' ') + '</td>\
+                    <td>' + (books[i].returned == null ? 'Nie zwrócona' : books[i].returned.substring(0, 19).replace('T', ' ')) + '</td>\
+                </tr>');
 
-                        $('#prolong_books').append('\
-                        <tr>\
-                            <td>' + book.title + '</td>\
-                            <td id="date_' + books[i].idLend + '">' + books[i].returnDate.substring(0, 19).replace('T', ' ') + '</td>\
-                            <td><button type="button" id="prolong_book" data-id="' + books[i].idLend + '" class="btn btn-sm btn-primary">Prolonguj</button></td>\
-                        </tr>');
-                    },
-                    error: function(html)
-                    {
-                        console.log(html);
-                    }
-                });
+                if(books[i].returned == null)
+                {
+                    $('#prolong_books').append('\
+                    <tr>\
+                        <td id="book_title_' + books[i].idLend +'"></td>\
+                        <td id="date_' + books[i].idLend + '">' + books[i].returnDate.substring(0, 19).replace('T', ' ') + '</td>\
+                        <td><button type="button" id="prolong_book" data-id="' + books[i].idLend + '" class="btn btn-sm btn-primary">Prolonguj</button></td>\
+                    </tr>');
+                }
+                
+
+                getBookTitle('#book_title_' + books[i].idLend, books[i].idBook);
             }
 		},
 		error: function(html)
@@ -70,3 +62,22 @@ $('body').on('click', '#prolong_book', function()
         }
     });
 });
+
+function getBookTitle(target, id)
+{
+    $.ajax(
+    {
+        type: "GET",
+        url: "/api/book/" + id,
+        success: function(html)
+        {
+            var book = JSON.parse(html);
+            
+            $(target).text(book.title);
+        },
+        error: function(html)
+        {
+            console.log(html);
+        }
+    });
+}

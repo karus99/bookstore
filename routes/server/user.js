@@ -117,7 +117,7 @@ router.get('/all', function(req, res, next)
 	})
 });
 
-router.get('/:id', function(req, res, next)
+router.get('/:id([0-9]+)', function(req, res, next)
 {
 	user.findAll(
 	{
@@ -255,7 +255,8 @@ router.post('/:id/lend/:book', function(req, res, next)
 		where:
 		{
 			idUser: req.params.id,
-			idBook: req.params.book
+			idBook: req.params.book,
+			returned: null
 		}
 	}).then(function (lend_)
 	{
@@ -350,6 +351,46 @@ router.put('/:id/lend/:lend/prolong', function(req, res, next)
 		{
 			res.send((d).toISOString().substring(0, 19).replace('T', ' '));
 		})
+	})
+});
+
+router.get('/lends', function(req, res, next)
+{
+	lend.findAll(
+	{
+		order:
+		[
+			['returnDate', 'ASC']
+		],
+		where:
+		{
+			returned:
+			{
+				$eq: null
+			}
+		}
+	}).then(function(lends_)
+	{
+		res.send(JSON.stringify(lends_));
+	})
+});
+
+router.put('/:id/lend/:lend/return', function(req, res, next)
+{
+	var d = new Date();
+
+	lend.update(
+	{
+		returned: (d).toISOString().substring(0, 19).replace('T', ' ')
+	},
+	{
+		where:
+		{
+			idLend: req.params.lend
+		}
+	}).then(function(lend_)
+	{
+		res.send("BOOK_RETURNED");
 	})
 });
 

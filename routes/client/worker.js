@@ -59,6 +59,12 @@ router.get('/recommmend', function(req, res, next)
 	res.render('worker_add_del_recomendation', { auth: auth });
 });
 
+router.get('/return-book', function(req, res, next)
+{
+    auth = req.app.get("auth");
+	res.render('worker_return_book', { auth: auth });
+});
+
 module.exports = function(_photo)
 {
 	photo = _photo;

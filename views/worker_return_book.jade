@@ -28,13 +28,15 @@ block content
                         li.list-group-item
                             a(href='/worker/return-book') Zwróć książkę
                 .col-md-9.text-center
-                    h2.text-success Polecane książki.
-                    table.table.table-striped.table-hover
+                    h2.text-success Witamy w panelu bibliotekarza.
+                    table.table.table-hover
                         thead
                             tr
-                                th Kziążka
-                                th.text-right(style="padding-right: 10px;") Akcja
-                        tbody#recommendated_books_table.text-left
-                    
+                                th Użytkownik
+                                th Tytuł
+                                th Data zwrotu
+                                th
+                        tbody#return_books
+
 block scripts
-    script(src='/javascripts/worker.js')
+    script(src='/javascripts/worker-return.js')
